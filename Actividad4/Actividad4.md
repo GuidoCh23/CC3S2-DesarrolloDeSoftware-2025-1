@@ -27,9 +27,9 @@ Nombre: Guido Anthony Chipana Calderon
      greet()
      ```
 
-<div align="center">
-  <img src="https://i.postimg.cc/dDPJJGqR/Act4-Ejercicio1-2.png" alt="act4Ejer1.2" width="500" />
-</div>
+      <div align="center">
+        <img src="https://i.postimg.cc/dDPJJGqR/Act4-Ejercicio1-2.png" alt="act4Ejer1.2" width="500" />
+      </div>
 
    - Añade y confirma estos cambios en la rama `feature/advanced-feature`:
 
