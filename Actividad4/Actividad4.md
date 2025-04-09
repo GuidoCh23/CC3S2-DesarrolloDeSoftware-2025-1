@@ -49,18 +49,18 @@ Nombre: Guido Anthony Chipana Calderon
      $ git checkout main
      ```
 
-<div align="center">
-  <img src="https://i.postimg.cc/4NgdkTnD/Act4-Ejercicio1-4.png" alt="act4Ejer1.4" width="700" />
-</div>
+      <div align="center">
+        <img src="https://i.postimg.cc/4NgdkTnD/Act4-Ejercicio1-4.png" alt="act4Ejer1.4" width="700" />
+      </div>
 
    - Edita el archivo `main.py` de forma diferente (por ejemplo, cambia el mensaje del print original):
      ```python
      print('Hello World - updated in main')
      ```
 
-<div align="center">
-  <img src="https://i.postimg.cc/GpVLXWZS/Act4-Ejercicio1-5.png" alt="act4Ejer1.5" width="400" />
-</div>
+      <div align="center">
+        <img src="https://i.postimg.cc/GpVLXWZS/Act4-Ejercicio1-5.png" alt="act4Ejer1.5" width="400" />
+      </div>
 
    - Añade y confirma estos cambios en la rama `main`:
 
@@ -69,9 +69,9 @@ Nombre: Guido Anthony Chipana Calderon
      $ git commit -m "Update main.py message in main branch"
      ```
      
-<div align="center">
-  <img src="https://i.postimg.cc/y6F1Trnv/Act4-Ejercicio1-6.png" alt="act4Ejer1.6" width="700" />
-</div>
+      <div align="center">
+        <img src="https://i.postimg.cc/y6F1Trnv/Act4-Ejercicio1-6.png" alt="act4Ejer1.6" width="700" />
+      </div>
 
 4. **Intentar fusionar la rama feature/advanced-feature en main:**
    - Fusiona la rama `feature/advanced-feature` en `main`:
