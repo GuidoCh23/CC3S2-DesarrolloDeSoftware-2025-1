@@ -80,17 +80,17 @@ Nombre: Guido Anthony Chipana Calderon
      $ git merge feature/advanced-feature
      ```
      
-<div align="center">
-  <img src="https://i.postimg.cc/9FCWgtnV/Act4-Ejercicio1-7.png" alt="act4Ejer1.7" width="700" />
-</div>
+      <div align="center">
+        <img src="https://i.postimg.cc/9FCWgtnV/Act4-Ejercicio1-7.png" alt="act4Ejer1.7" width="700" />
+      </div>
 
 5. **Resolver el conflicto de fusión:**
    - Git generará un conflicto en `main.py`. Abre el archivo y resuelve el conflicto manualmente, eligiendo cómo combinar las dos versiones.
      
-<div align="center">
-  <img src="https://i.postimg.cc/FKdmkP7b/Act4-Ejercicio1-8.png" width="400" />
-  <img src="https://i.postimg.cc/XJ9bQpKp/Act4-Ejercicio1-9.png" alt="act4Ejer1.8" width="400" />
-</div>
+      <div align="center">
+        <img src="https://i.postimg.cc/FKdmkP7b/Act4-Ejercicio1-8.png" width="400" />
+        <img src="https://i.postimg.cc/XJ9bQpKp/Act4-Ejercicio1-9.png" alt="act4Ejer1.8" width="400" />
+      </div>
 
    - Después de resolver el conflicto, añade el archivo resuelto y completa la fusión:
 
@@ -99,9 +99,9 @@ Nombre: Guido Anthony Chipana Calderon
      $ git commit -m "Resolve merge conflict between main and feature/advanced-feature"
      ```
      
-<div align="center">
-  <img src="https://i.postimg.cc/Z5gzmrVW/Act4-Ejercicio1-10.png" alt="act4Ejer1.10" width="900" />
-</div>
+      <div align="center">
+        <img src="https://i.postimg.cc/Z5gzmrVW/Act4-Ejercicio1-10.png" alt="act4Ejer1.10" width="900" />
+      </div>
 
 6. **Eliminar la rama fusionada:**
    - Una vez que hayas fusionado con éxito y resuelto los conflictos, elimina la rama `feature/advanced-feature`:
@@ -110,6 +110,6 @@ Nombre: Guido Anthony Chipana Calderon
      $ git branch -d feature/advanced-feature
      ```
      
-<div align="center">
-  <img src="https://i.postimg.cc/cCTPbYv4/Act4-Ejercicio1-11.png" alt="act4Ejer1.11" width="700" />
-</div>
+      <div align="center">
+        <img src="https://i.postimg.cc/cCTPbYv4/Act4-Ejercicio1-11.png" alt="act4Ejer1.11" width="700" />
+      </div>
