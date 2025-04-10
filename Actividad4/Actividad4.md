@@ -313,6 +313,11 @@ Nombre: Guido Anthony Chipana Calderon
      ```python
      print('This change will be reset')
      ```
+
+      <div align="center">
+        <img src="https://i.postimg.cc/Twmc1Wg2/Act4-Ejercicio4-1.png" alt="act4Ejer4.1" width="450" />
+      </div>
+      
    - Añade y confirma los cambios:
 
      ```bash
@@ -320,13 +325,22 @@ Nombre: Guido Anthony Chipana Calderon
      $ git commit -m "Introduce a change to be reset"
      ```
 
+      <div align="center">
+        <img src="https://i.postimg.cc/Hn944D6f/Act4-Ejercicio4-2.png" alt="act4Ejer4.2" width="700" />
+      </div>
+      
 2. **Usar git reset para deshacer el commit:**
    - Deshaz el commit utilizando `git reset` para volver al estado anterior:
 
      ```bash
      $ git reset --hard HEAD~1
      ```
+     
    - Verifica que el commit ha sido eliminado del historial y que el archivo ha vuelto a su estado anterior.
+
+      <div align="center">
+        <img src="https://i.postimg.cc/RVvTChF9/Act4-Ejercicio4-3.png" alt="act4Ejer4.3" width="800" />
+      </div>
 
 3. **Usar git restore para deshacer cambios no confirmados:**
    - Realiza un cambio en `README.md` y no lo confirmes:
@@ -335,13 +349,22 @@ Nombre: Guido Anthony Chipana Calderon
      $ echo "Another line in README" >> README.md
      $ git status
      ```
+
+      <div align="center">
+        <img src="https://i.postimg.cc/DZVq9yD9/Act4-Ejercicio4-4.png" alt="act4Ejer4.4" width="700" />
+      </div>
+      
    - Usa `git restore` para deshacer este cambio no confirmado:
 
      ```bash
      $ git restore README.md
      ```
+      
    - Verifica que el cambio no confirmado ha sido revertido.
 
+      <div align="center">
+        <img src="https://i.postimg.cc/ZnHpvPRm/Act4-Ejercicio4-5.png" alt="act4Ejer4.5" width="700" />
+      </div>
 
 ### Ejercicio 5: Trabajo colaborativo y manejo de Pull Requests
 
