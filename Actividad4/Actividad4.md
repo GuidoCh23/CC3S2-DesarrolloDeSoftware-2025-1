@@ -379,6 +379,10 @@ Nombre: Guido Anthony Chipana Calderon
      $ git clone <URL-del-repositorio>
      ```
 
+      <div align="center">
+        <img src="https://i.postimg.cc/652wbWrV/Act4-Ejercicio5-1.png" alt="act4Ejer5.1" width="750" />
+      </div>
+
 2. **Crear una nueva rama para desarrollo de una característica:**
    - En tu repositorio local, crea una nueva rama `feature/team-feature`:
 
@@ -386,6 +390,10 @@ Nombre: Guido Anthony Chipana Calderon
      $ git branch feature/team-feature
      $ git checkout feature/team-feature
      ```
+
+      <div align="center">
+        <img src="https://i.postimg.cc/fLRQcDW9/Act4-Ejercicio5-2.png" alt="act4Ejer5.2" width="700" />
+      </div>
 
 3. **Realizar cambios y enviar la rama al repositorio remoto:**
    - Realiza cambios en los archivos del proyecto y confírmalos:
@@ -395,19 +403,42 @@ Nombre: Guido Anthony Chipana Calderon
      $ git add .
      $ git commit -m "Add collaboration script"
      ```
+
+      <div align="center">
+        <img src="https://i.postimg.cc/fy64Qdcc/Act4-Ejercicio5-3.png" alt="act4Ejer5.3" width="800" />
+      </div>
+
    - Envía la rama al repositorio remoto:
 
      ```bash
      $ git push origin feature/team-feature
      ```
 
+      <div align="center">
+        <img src="https://i.postimg.cc/tRfGxKKs/Act4-Ejercicio5-4.png" alt="act4Ejer5.4" width="700" />
+      </div>
+
 4. **Abrir un Pull Request:**
-   - Abre un Pull Request (PR) en la plataforma remota (GitHub/GitLab) para fusionar `feature/team-feature` con la rama `main`.
+   - Abre un Pull Request (PR) en la plataforma remota (GitHub/GitLab) para fusionar `feature/team-feature` con la rama `main/master`.
    - Añade una descripción detallada del PR, explicando los cambios realizados y su propósito.
+
+      <div align="center">
+        <img src="https://i.postimg.cc/7LqF4w2W/Act4-Ejercicio5-5.png" alt="act4Ejer5.5" width="700" />
+      </div>
 
 5. **Revisar y fusionar el Pull Request:**
    - Simula la revisión de código, comenta en el PR y realiza cualquier cambio necesario basado en la retroalimentación.
-   - Una vez aprobado, fusiona el PR en la rama `main`.
+
+      <div align="center">
+        <img src="https://i.postimg.cc/kGRZs50B/Act4-Ejercicio5-6.png" alt="act4Ejer5.6" width="700" />
+      </div>
+   
+   - Una vez aprobado, fusiona el PR en la rama `main/master`.
+
+      <div align="center">
+        <img src="https://i.postimg.cc/rwTVd64S/Act4-Ejercicio5-7.png" width="550" />
+        <img src="https://i.postimg.cc/zvWNBpXt/Act4-Ejercicio5-8.png" alt="act4Ejer5.8" width="500" />
+      </div>
 
 6. **Eliminar la rama remota y local:**
    - Después de la fusión, elimina la rama tanto local como remotamente:
@@ -416,6 +447,10 @@ Nombre: Guido Anthony Chipana Calderon
      $ git branch -d feature/team-feature
      $ git push origin --delete feature/team-feature
      ```
+
+      <div align="center">
+        <img src="https://i.postimg.cc/SN6qbZPj/Act4-Ejercicio5-9.png" alt="act4Ejer5.9" width="800" />
+      </div>
 
 ### Ejercicio 6: Cherry-Picking y Git Stash
 
