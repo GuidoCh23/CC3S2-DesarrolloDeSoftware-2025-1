@@ -129,16 +129,14 @@ Nombre: Guido Anthony Chipana Calderon
      ```
 
       <div align="center">
-        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="500" />
+        <img src="https://i.postimg.cc/gcvMkvkx/Act4-Ejercicio2-1.png" alt="act4Ejer2.1" width="650" />
       </div>
       
    - Examina las diferencias introducidas en cada commit. ¿Qué cambios fueron realizados en cada uno?
 
-      <div align="center">
-        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="500" />
-      </div>
+      Vemos que hay muchos commits que detallan el autor del commit, cuando fue hecho y cual fue el cambio hecho.
 
-1. **Filtrar commits por autor:**
+2. **Filtrar commits por autor:**
    - Usa el siguiente comando para mostrar solo los commits realizados por un autor específico:
 
      ```bash
@@ -146,27 +144,28 @@ Nombre: Guido Anthony Chipana Calderon
      ```
 
       <div align="center">
-        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="500" />
+        <img src="https://i.postimg.cc/Jh5nz6gT/Act4-Ejercicio2-2.png" alt="act4Ejer2.2" width="500" />
       </div>
       
-2. **Revertir un commit:**
+3. **Revertir un commit:**
    - Imagina que el commit más reciente en `main.py` no debería haberse hecho. Usa `git revert` para revertir ese commit:
 
      ```bash
      $ git revert HEAD
      ```
-
+     
       <div align="center">
-        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="500" />
+        <img src="https://i.postimg.cc/x1Kj6p00/Act4-Ejercicio2-3.png" width="450" />
+        <img src="https://i.postimg.cc/rpjVkd03/Act4-Ejercicio2-4.png" alt="act4Ejer2.4" width="500" />
       </div>
 
    - Verifica que el commit de reversión ha sido añadido correctamente al historial.
 
       <div align="center">
-        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="500" />
+        <img src="https://i.postimg.cc/kG6qKf1P/Act4-Ejercicio2-5.png" alt="act4Ejer2.5" width="700" />
       </div>
       
-2. **Rebase interactivo:**
+4. **Rebase interactivo:**
    - Realiza un rebase interactivo para combinar varios commits en uno solo. Esto es útil para limpiar el historial de commits antes de una fusión.
    - Usa el siguiente comando para empezar el rebase interactivo:
 
@@ -175,16 +174,18 @@ Nombre: Guido Anthony Chipana Calderon
      ```
 
       <div align="center">
-        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="500" />
+        <img src="https://i.postimg.cc/s24YCJJz/Act4-Ejercicio2-10.png" alt="act4Ejer2.10" width="500" />
       </div>
      
    - En el editor que se abre, combina los últimos tres commits en uno solo utilizando la opción `squash`.
 
       <div align="center">
-        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="500" />
+        <img src="https://i.postimg.cc/SKCZ2871/Act4-Ejercicio2-6.png" width="400" />
+        <img src="https://i.postimg.cc/tTDNWz1k/Act4-Ejercicio2-8.png" width="400" />
+        <img src="https://i.postimg.cc/RV2Q7h0k/Act4-Ejercicio2-9.png" alt="act4Ejer2.9" width="400" />
       </div>
 
-3. **Visualización gráfica del historial:**
+5. **Visualización gráfica del historial:**
    - Usa el siguiente comando para ver una representación gráfica del historial de commits:
 
      ```bash
@@ -192,11 +193,12 @@ Nombre: Guido Anthony Chipana Calderon
      ```
 
       <div align="center">
-        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="500" />
+        <img src="https://i.postimg.cc/T1FmJNTV/Act4-Ejercicio2-11.png" alt="act4Ejer2.11" width="700" />
       </div>
      
    - Reflexiona sobre cómo el historial de tu proyecto se visualiza en este formato. ¿Qué información adicional puedes inferir?
 
+      Puedo ver que los commits son representados en forma de asteriscos (*) y que estas tienen cada un hash unico como tambien el comentario de que es ese commit, tambien que los commits que agregue en rebase ya no se encuentran por separado sino que todo esta junto en un solo commit.
 
 ### Ejercicio 3: Creación y gestión de ramas desde commits específicos
 
