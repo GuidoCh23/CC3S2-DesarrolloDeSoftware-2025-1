@@ -14,9 +14,10 @@ Nombre: Guido Anthony Chipana Calderon
      $ git branch feature/advanced-feature
      $ git checkout feature/advanced-feature
       ```
-<div align="center">
-  <img src="https://i.postimg.cc/PxXpjs6f/Act4-Ejercicio1-1.png" alt="act4Ejer1.1" width="700" />
-</div>
+     
+      <div align="center">
+        <img src="https://i.postimg.cc/PxXpjs6f/Act4-Ejercicio1-1.png" alt="act4Ejer1.1" width="700" />
+      </div>
 
 2. **Modificar archivos en la nueva rama:**
    - Edita el archivo `main.py` para incluir una función adicional:
@@ -126,38 +127,74 @@ Nombre: Guido Anthony Chipana Calderon
      ```bash
      $ git log -p
      ```
+
+      <div align="center">
+        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="500" />
+      </div>
+      
    - Examina las diferencias introducidas en cada commit. ¿Qué cambios fueron realizados en cada uno?
 
-2. **Filtrar commits por autor:**
+      <div align="center">
+        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="500" />
+      </div>
+
+1. **Filtrar commits por autor:**
    - Usa el siguiente comando para mostrar solo los commits realizados por un autor específico:
 
      ```bash
      $ git log --author="TuNombre"
      ```
 
-3. **Revertir un commit:**
+      <div align="center">
+        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="500" />
+      </div>
+      
+2. **Revertir un commit:**
    - Imagina que el commit más reciente en `main.py` no debería haberse hecho. Usa `git revert` para revertir ese commit:
 
      ```bash
      $ git revert HEAD
      ```
+
+      <div align="center">
+        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="500" />
+      </div>
+
    - Verifica que el commit de reversión ha sido añadido correctamente al historial.
 
-4. **Rebase interactivo:**
+      <div align="center">
+        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="500" />
+      </div>
+      
+2. **Rebase interactivo:**
    - Realiza un rebase interactivo para combinar varios commits en uno solo. Esto es útil para limpiar el historial de commits antes de una fusión.
    - Usa el siguiente comando para empezar el rebase interactivo:
 
      ```bash
      $ git rebase -i HEAD~3
      ```
+
+      <div align="center">
+        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="500" />
+      </div>
+     
    - En el editor que se abre, combina los últimos tres commits en uno solo utilizando la opción `squash`.
 
-5. **Visualización gráfica del historial:**
+      <div align="center">
+        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="500" />
+      </div>
+
+3. **Visualización gráfica del historial:**
    - Usa el siguiente comando para ver una representación gráfica del historial de commits:
 
      ```bash
      $ git log --graph --oneline --all
      ```
+
+      <div align="center">
+        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="500" />
+      </div>
+     
    - Reflexiona sobre cómo el historial de tu proyecto se visualiza en este formato. ¿Qué información adicional puedes inferir?
 
 
@@ -173,6 +210,11 @@ Nombre: Guido Anthony Chipana Calderon
      ```bash
      $ git log --oneline
      ```
+
+      <div align="center">
+        <img src="https://i.postimg.cc/xdy55QJ9/Act4-Ejercicio3-1.png" alt="act4Ejer3.1" width="650" />
+      </div>
+      
    - Crea una nueva rama `bugfix/rollback-feature` desde ese commit:
 
      ```bash
@@ -180,18 +222,31 @@ Nombre: Guido Anthony Chipana Calderon
      $ git checkout bugfix/rollback-feature
      ```
 
+      <div align="center">
+        <img src="https://i.postimg.cc/1RYHJJtV/Act4-Ejercicio3-2.png" alt="act4Ejer3.2" width="700" />
+      </div>
+
 2. **Modificar y confirmar cambios en la nueva rama:**
    - Realiza algunas modificaciones en `main.py` que simulen una corrección de errores:
      ```python
      def greet():
          print('Fixed bug in feature')
      ```
+     
+      <div align="center">
+        <img src="https://i.postimg.cc/FKZbcx8R/Act4-Ejercicio3-3.png" alt="act4Ejer3.3" width="500" />
+      </div>
+      
    - Añade y confirma los cambios en la nueva rama:
 
      ```bash
      $ git add main.py
      $ git commit -m "Fix bug in rollback feature"
      ```
+
+      <div align="center">
+        <img src="https://i.postimg.cc/W3YMY12c/Act4-Ejercicio3-4.png" alt="act4Ejer3.4" width="700" />
+      </div>
 
 3. **Fusionar los cambios en la rama principal:**
    - Cambia de nuevo a la rama `main` y fusiona la rama `bugfix/rollback-feature`:
@@ -201,12 +256,38 @@ Nombre: Guido Anthony Chipana Calderon
      $ git merge bugfix/rollback-feature
      ```
 
+      <div align="center">
+        <img src="https://i.postimg.cc/NFrrN8JR/Act4-Ejercicio3-5.png" alt="act4Ejer3.5" width="650" />
+      </div>
+
+   - Arreglamos los conflictos manualmente:
+  
+      <div align="center">
+        <img src="https://i.postimg.cc/t4zDtyVp/Act4-Ejercicio3-6.png" width="400" />
+        <img src="https://i.postimg.cc/rsWNdLk6/Act4-Ejercicio3-7.png" alt="act4Ejer3.7" width="400" />
+      </div>
+
+   - Añade el archivo resuelto y completamos el merge
+
+     ```bash
+     $ git add main.py
+     $ git commit -m “resolve marge and fix bug in rollback feature”
+     ```
+
+      <div align="center">
+        <img src="https://i.postimg.cc/cLTMtmVJ/Act4-Ejercicio3-8.png" alt="act4Ejer3.8" width="900" />
+      </div>
+      
 4. **Explorar el historial después de la fusión:**
    - Usa `git log` y `git log --graph` para ver cómo se ha integrado el commit en el historial:
 
      ```bash
      $ git log --graph --oneline
      ```
+
+      <div align="center">
+        <img src="https://i.postimg.cc/Kz3nVy4K/Act4-Ejercicio3-9.png" alt="act4Ejer3.9" width="600" />
+      </div>
 
 5. **Eliminar la rama bugfix/rollback-feature:**
    - Una vez fusionados los cambios, elimina la rama `bugfix/rollback-feature`:
@@ -215,6 +296,9 @@ Nombre: Guido Anthony Chipana Calderon
      $ git branch -d bugfix/rollback-feature
      ```
 
+      <div align="center">
+        <img src="https://i.postimg.cc/8PmLx4kb/Act4-Ejercicio3-10.png" alt="act4Ejer3.10" width="700" />
+      </div>
 
 ### Ejercicio 4: Manipulación y restauración de commits con git reset y git restore
 
