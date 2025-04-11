@@ -467,6 +467,10 @@ Nombre: Guido Anthony Chipana Calderon
      $ git commit -m "Add cherry-pick example"
      ```
 
+      <div align="center">
+        <img src="https://i.postimg.cc/3Rwnz0pt/Act4-Ejercicio6-1.png" alt="act4Ejer6.1" width="800" />
+      </div>
+
 2. **Crear una nueva rama y aplicar el commit específico:**
    - Crea una nueva rama `feature/cherry-pick` y aplícale el commit específico:
 
@@ -476,6 +480,11 @@ Nombre: Guido Anthony Chipana Calderon
      $ git cherry-pick <commit-hash>
      ```
 
+      <div align="center">
+        <img src="https://i.postimg.cc/br7gG655/Act4-Ejercicio6-2.png" width="800" />
+        <img src="https://i.postimg.cc/1Rb1cyhk/Act4-Ejercicio6-3.png" alt="act4Ejer6.3" width="800" />
+      </div>
+
 3. **Guardar temporalmente cambios no confirmados:**
    - Realiza algunos cambios en `main.py` pero no los confirmes:
 
@@ -483,19 +492,41 @@ Nombre: Guido Anthony Chipana Calderon
      $ echo "This change is stashed" >> main.py
      $ git status
      ```
+
+      <div align="center">
+        <img src="https://i.postimg.cc/65RJMFBy/Act4-Ejercicio6-4.png" alt="act4Ejer6.4" width="800" />
+      </div>
+      
    - Guarda temporalmente estos cambios utilizando `git stash`:
 
      ```bash
      $ git stash
      ```
 
+      <div align="center">
+        <img src="https://i.postimg.cc/C1Vff3Mk/Act4-Ejercicio6-5.png" alt="act4Ejer6.5" width="800" />
+      </div>
+
 4. **Aplicar los cambios guardados:**
    - Realiza otros cambios y confírmalos si es necesario.
+  
+      <div align="center">
+        <img src="https://i.postimg.cc/G2JTPX9N/Act4-Ejercicio6-6.png" alt="act4Ejer6.6" width="800" />
+      </div>
+
    - Luego, recupera los cambios guardados anteriormente:
 
      ```bash
      $ git stash pop
      ```
 
+      <div align="center">
+        <img src="https://i.postimg.cc/KcfgRp63/Act4-Ejercicio6-7.png" alt="act4Ejer6.7" width="800" />
+      </div>
+
 5. **Revisar el historial y confirmar la correcta aplicación de los cambios:**
    - Usa `git log` para revisar el historial de commits y verificar que todos los cambios se han aplicado correctamente.
+  
+      <div align="center">
+        <img src="https://i.postimg.cc/X7DGgG7V/Act4-Ejercicio6-8.png" alt="act4Ejer6.8" width="760" />
+      </div>
