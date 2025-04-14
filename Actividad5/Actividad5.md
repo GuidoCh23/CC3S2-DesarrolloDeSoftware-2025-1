@@ -209,11 +209,11 @@ Este ejercicio te permitirá observar las diferencias en el historial generado p
    </div>
 
 **Preguntas:**
-- ¿Cómo se ve el historial en cada tipo de fusión?
+- **¿Cómo se ve el historial en cada tipo de fusión?**
 
 En el caso de Non-fast-forward y Squash se ve como un commit aparte para la fusion, pero en el caso de Fast Forward se funsiona sin agregar un commit extra para la fusion
 
-- ¿Qué método prefieres en diferentes escenarios y por qué?
+- **¿Qué método prefieres en diferentes escenarios y por qué?**
 
 Fast-forward lo prefiero para cambios pequeños y lineales para mantener un historial limpio. Non-fast-forward para caracteristicas mas complejas que requieren documentar detalladamente su integracion mediante commits de merge. Y Squash para limpiar ramas con muchos commits pequeños dejando solo un commit limpio y descriptivo en main.
 
@@ -268,8 +268,13 @@ En este ejercicio, aprenderás cómo Git puede fusionar automáticamente cambios
    ```
 
 **Preguntas:**
-- ¿Cuándo usarías un comando como git revert para deshacer una fusión?
-- ¿Qué tan útil es la función de fusión automática en Git?
+- **¿Cuándo usarías un comando como git revert para deshacer una fusión?**
+
+
+
+- **¿Qué tan útil es la función de fusión automática en Git?**
+
+
 
 ### Ejercicio 7: Fusión remota en un repositorio colaborativo
 
@@ -315,11 +320,11 @@ Este ejercicio te permitirá practicar la fusión de ramas en un entorno remoto 
    </div>
 
 **Preguntas:**
-- ¿Cómo cambia la estrategia de fusión cuando colaboras con otras personas en un repositorio remoto?
+- **¿Cómo cambia la estrategia de fusión cuando colaboras con otras personas en un repositorio remoto?**
 
 La estrategia cambia porque ya no decides solo, hay que adaptarse a las politicas del equipo sobre usar algun tipo de estrategia de fusion. Ahora importa mas la comunicacion y las politicas del equipo.
 
-- ¿Qué problemas comunes pueden surgir al integrar ramas remotas?
+- **¿Qué problemas comunes pueden surgir al integrar ramas remotas?**
 
 Podemos tener problemas como conflictos de fusion cuando hay varias modificaciones en el mismo archivo y tambien podemos tener commits desordenados que son dificiles de revisar.
 
