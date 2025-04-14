@@ -137,16 +137,30 @@ Este ejercicio te permitirá observar las diferencias en el historial generado p
    git commit -m "Se agrega caracteristica 2"
    ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/KzgYgVNB/Act5-Ejercicio5-1.png" alt="act5Ejer5.1" width="900" />
+   </div>
+
 2. Fusiona feature-1 usando fast-forward:
    ```bash
    git checkout main
    git merge feature-1 --ff
    ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/dV1wypQ3/Act5-Ejercicio5-2.png" alt="act5Ejer15.2" width="700" />
+   </div>
+
 3. Fusiona feature-2 usando non-fast-forward:
    ```bash
    git merge feature-2 --no-ff
    ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/SKC52f9j/Act5-Ejercicio5-3.png" width="750" />
+      <img src="https://i.postimg.cc/1tyWghPY/Act5-Ejercicio5-4.png" width="300" />
+      <img src="https://i.postimg.cc/x84gFXmW/Act5-Ejercicio5-5.png" alt="act5Ejer5.5" width="300" />
+   </div>
 
 4. Realiza una nueva rama feature-3 con múltiples commits y fusiónala con squash:
    ```bash
@@ -162,24 +176,46 @@ Este ejercicio te permitirá observar las diferencias en el historial generado p
    git commit -m "Agregar caracteristica 3 en un commit"
    ```
 
-5. Compara el historial de Git:
+   <div align="center">
+      <img src="https://i.postimg.cc/G23QLFJW/Act5-Ejercicio5-6.png" alt="act5Ejer5.6" width="900" />
+   </div>
+
+4. Compara el historial de Git:
    - Historial Fast-forward:
      ```bash
-     git log --graph --oneline --merges --first-parent –branches
+     git log --graph --oneline --first-parent
      ```
+     
+   <div align="center">
+      <img src="https://i.postimg.cc/QM8Y69nd/Act5-Ejercicio5-7.png" alt="act5Ejer5.7" width="800" />
+   </div>
+
    - Historial Non-fast-forward:
      ```bash
      git log --graph --oneline –merges
      ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/V6SRTj9m/Act5-Ejercicio5-8.png" alt="act5Ejer5.8" width="800" />
+   </div>
+
    - Historial con Squash:
      ```bash
-     git log --graph --oneline --merges --decorate --all
+     git log --graph --oneline --decorate --all
      ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/t452VRCQ/Act5-Ejercicio5-9.png" alt="act5Ejer5.9" width="800" />
+   </div>
 
 **Preguntas:**
 - ¿Cómo se ve el historial en cada tipo de fusión?
+
+En el caso de Non-fast-forward y Squash se ve como un commit aparte para la fusion, pero en el caso de Fast Forward se funsiona sin agregar un commit extra para la fusion
+
 - ¿Qué método prefieres en diferentes escenarios y por qué?
 
+Fast-forward lo prefiero para cambios pequeños y lineales para mantener un historial limpio. Non-fast-forward para caracteristicas mas complejas que requieren documentar detalladamente su integracion mediante commits de merge. Y Squash para limpiar ramas con muchos commits pequeños dejando solo un commit limpio y descriptivo en main.
 
 ### Ejercicio 6: Usando fusiones automáticas y revertir fusiones
 
