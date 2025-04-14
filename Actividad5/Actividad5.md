@@ -16,12 +16,29 @@ Nombre: Guido Anthony Chipana Calderon
    **Pregunta:** ¿Cuáles son las principales ventajas de utilizar `git merge --no-ff` en un proyecto en equipo? ¿Qué problemas podrían surgir al depender excesivamente de commits de fusión?
 
 ### Ejercicio 3: Crea múltiples commits en una rama.  
-   Haz varios cambios y commits en una rama feature.  
+   Haz varios cambios y commits en una rama feature.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/rFtF55Zw/Act5-Ejercicio1-1.png" alt="act5Ejer1.1" width="800" />
+   </div>
+   
    Fusiona la rama con `git merge --squash` para aplanar todos los commits en uno solo.  
+
+   <div align="center">
+      <img src="https://i.postimg.cc/Sx3PCz5k/Act5-Ejercicio1-2.png" alt="act5Ejer1.2" width="630" />
+   </div>
+
    Verifica el historial de commits antes y después de la fusión para ver la diferencia.  
 
-   **Pregunta:** ¿Cuándo es recomendable utilizar una fusión squash? ¿Qué ventajas ofrece para proyectos grandes en comparación con fusiones estándar?
+   <div align="center">
+      <img src="https://i.postimg.cc/T1jyqmQS/Act5-Ejercicio1-3.png" alt="act5Ejer1.3" width="750" />
+   </div>
 
+   **Preguntas:** 
+   - **¿Cuándo es recomendable utilizar una fusión squash?** 
+   Es recomendable cuando tienes muchos commits pequeños o experimentales que no merecen estar en el historial principal. Hay que usar squash cuando tenemos caracteristicas que pasaron por varias revisiones dejando solo un commit limpio y descriptivo en main.
+   - **¿Qué ventajas ofrece para proyectos grandes en comparación con fusiones estándar?**
+   En proyectos grandes, el squash merge tiene como ventaja que mantiene el historial principal limpio y navegable ya que evita la acumulacion de muchos commits pequeños ya que todo estos commits pequeños lo agrupa en un solo commit, simplificando la revision del codigo y mejora la legibilidad del historial.
 
 ### Ejercicio 4: Resolver conflictos en una fusión non-fast-forward
 
@@ -246,7 +263,7 @@ Este ejercicio te permitirá practicar la fusión de ramas en un entorno remoto 
 - ¿Qué problemas comunes pueden surgir al integrar ramas remotas?
 
 
-### Ejercicio 7 y final: flujo de trabajo completo
+### Ejercicio 8 y final: flujo de trabajo completo
 
 Configura un proyecto simulado:
 
