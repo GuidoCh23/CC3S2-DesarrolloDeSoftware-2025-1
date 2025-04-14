@@ -36,9 +36,12 @@ Nombre: Guido Anthony Chipana Calderon
 
    **Preguntas:** 
    - **¿Cuándo es recomendable utilizar una fusión squash?** 
-   Es recomendable cuando tienes muchos commits pequeños o experimentales que no merecen estar en el historial principal. Hay que usar squash cuando tenemos caracteristicas que pasaron por varias revisiones dejando solo un commit limpio y descriptivo en main.
+   
+   Es recomendable cuando tienes muchos commits pequeños o experimentales que no merecen estar en el historial principal. Hay que usar squash cuando tenemos caracteristicas que pasaron por varias revisiones dejando solo      un commit limpio y descriptivo en main.
+   
    - **¿Qué ventajas ofrece para proyectos grandes en comparación con fusiones estándar?**
-   En proyectos grandes, el squash merge tiene como ventaja que mantiene el historial principal limpio y navegable ya que evita la acumulacion de muchos commits pequeños ya que todo estos commits pequeños lo agrupa en un solo commit, simplificando la revision del codigo y mejora la legibilidad del historial.
+   
+   En proyectos grandes, el squash merge tiene como ventaja que mantiene el historial principal limpio y navegable ya que evita la acumulacion de muchos commits pequeños ya que todo estos commits pequeños lo agrupa en un     solo commit, simplificando la revision del codigo y mejora la legibilidad del historial.
 
 ### Ejercicio 4: Resolver conflictos en una fusión non-fast-forward
 
