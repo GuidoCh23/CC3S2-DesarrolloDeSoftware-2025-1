@@ -271,7 +271,6 @@ En este ejercicio, aprenderás cómo Git puede fusionar automáticamente cambios
 - ¿Cuándo usarías un comando como git revert para deshacer una fusión?
 - ¿Qué tan útil es la función de fusión automática en Git?
 
-
 ### Ejercicio 7: Fusión remota en un repositorio colaborativo
 
 Este ejercicio te permitirá practicar la fusión de ramas en un entorno remoto colaborativo, simulando un flujo de trabajo de equipo.
@@ -282,6 +281,10 @@ Este ejercicio te permitirá practicar la fusión de ramas en un entorno remoto 
    cd nombre-del-repositorio
    ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/RF0806cD/Act5-Ejercicio7-1.png" alt="act5Ejer7.1" width="800" />
+   </div>
+
 2. Crea una nueva rama colaboracion y haz algunos cambios:
    ```bash
    git checkout -b colaboracion
@@ -290,17 +293,35 @@ Este ejercicio te permitirá practicar la fusión de ramas en un entorno remoto 
    git commit -m "...."
    ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/ZK3Tm2Yy/Act5-Ejercicio7-2.png" alt="act5Ejer7.2" width="800" />
+   </div>
+
 3. Empuja los cambios a la rama remota:
    ```bash
    git push origin colaboracion
    ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/fbWZxbcx/Act5-Ejercicio7-3.png" alt="act5Ejer7.3" width="800" />
+   </div>
+
 4. Simula una fusión desde la rama colaboracion en la rama main de otro colaborador. (Puedes usar la interfaz de GitHub para crear un Pull Request y realizar la fusión).
+
+   <div align="center">
+      <img src="https://i.postimg.cc/bNRB193B/Act5-Ejercicio7-4.png" width="700" />
+      <img src="https://i.postimg.cc/mrKXTXgt/Act5-Ejercicio7-5.png" width="500" />
+      <img src="https://i.postimg.cc/x83ty9yz/Act5-Ejercicio7-6.png" alt="act5Ejer7.6" width="450" />
+   </div>
 
 **Preguntas:**
 - ¿Cómo cambia la estrategia de fusión cuando colaboras con otras personas en un repositorio remoto?
+
+La estrategia cambia porque ya no decides solo, hay que adaptarse a las politicas del equipo sobre usar algun tipo de estrategia de fusion. Ahora importa mas la comunicacion y las politicas del equipo.
+
 - ¿Qué problemas comunes pueden surgir al integrar ramas remotas?
 
+Podemos tener problemas como conflictos de fusion cuando hay varias modificaciones en el mismo archivo y tambien podemos tener commits desordenados que son dificiles de revisar.
 
 ### Ejercicio 8 y final: flujo de trabajo completo
 
