@@ -1,12 +1,37 @@
 ## ACTIVIDAD 5
 Nombre: Guido Anthony Chipana Calderon
 
-### Ejercicio 1: Clona un repositorio Git con múltiples ramas.  
+### Ejercicio 1: Clona un repositorio Git con múltiples ramas.
+   Clonamos un repositorio Git que tenga multiples ramas
+   
+   <div align="center">
+      <img src="https://i.postimg.cc/2503dhBr/Act5-Ejercicio11-1.png" width="800" />
+      <img src="https://i.postimg.cc/63SSDWmF/Act5-Ejercicio11-2.png" alt="act5Ejer11.2" width="600" />
+   </div>
+
    Identifica dos ramas que puedas fusionar utilizando `git merge --ff`.  
+
+   <div align="center">
+      <img src="https://i.postimg.cc/PJncXtmc/Act5-Ejercicio11-6.png" alt="act5Ejer11.3" width="500" />
+   </div>
+
+   Existen cambios en la rama colaboracion que no esta en develop, por lo que haremos el marge desde develop.
+   
    Haz el proceso de fusión utilizando `git merge --ff`.  
+
+   <div align="center">
+      <img src="https://i.postimg.cc/7ZjjsM5w/Act5-Ejercicio11-7.png" alt="act5Ejer11.4" width="650" />
+   </div>
+   
    Verifica el historial con `git log --graph --oneline`.  
 
+   <div align="center">
+      <img src="https://i.postimg.cc/9MH0h7nj/Act5-Ejercicio11-8.png" alt="act5Ejer11.5" width="650" />
+   </div>
+
    **Pregunta:** ¿En qué situaciones recomendarías evitar el uso de `git merge --ff`? Reflexiona sobre las desventajas de este método.
+
+Evitaria usar git merge --ff cuando queramos que este claro en el historial que hubo una rama con una funcionalidad o cambio especifico. Si usamos fast-forward se pierde ese commit de que algo vino de otra rama y eso puede complicar revisar el historial mas adelante.
 
 ### Ejercicio 2: Simula un flujo de trabajo de equipo.  
    Trabaja en dos ramas independientes, creando diferentes cambios en cada una.  
