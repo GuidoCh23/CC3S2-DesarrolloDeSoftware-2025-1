@@ -35,10 +35,33 @@ Evitaria usar git merge --ff cuando queramos que este claro en el historial que 
 
 ### Ejercicio 2: Simula un flujo de trabajo de equipo.  
    Trabaja en dos ramas independientes, creando diferentes cambios en cada una.  
+
+   <div align="center">
+      <img src="https://i.postimg.cc/T15yz7B2/Act5-Ejercicio2-1.png" alt="act5Ejer2.1" width="800" />
+   </div>
+   
    Fusiona ambas ramas con `git merge --no-ff` para ver cómo se crean los commits de fusión.  
+
+   <div align="center">
+      <img src="https://i.postimg.cc/bN8DCT3P/Act5-Ejercicio2-2.png" width="800" />
+      <img src="https://i.postimg.cc/B6H5DvQB/Act5-Ejercicio2-3.png" width="400" />
+      <img src="https://i.postimg.cc/0jZwdKgD/Act5-Ejercicio2-4.png" alt="act5Ejer2.4" width="400" />
+   </div>
+   
    Observa el historial utilizando `git log --graph --oneline`.  
 
-   **Pregunta:** ¿Cuáles son las principales ventajas de utilizar `git merge --no-ff` en un proyecto en equipo? ¿Qué problemas podrían surgir al depender excesivamente de commits de fusión?
+   <div align="center">
+      <img src="https://i.postimg.cc/mgWsNXw3/Act5-Ejercicio2-5.png" alt="act5Ejer2.5" width="700" />
+   </div>
+
+   **Pregunta:** 
+   - **¿Cuáles son las principales ventajas de utilizar `git merge --no-ff` en un proyecto en equipo?**
+
+El merge --no-ff nos permite mantener un historial mas claro y estructurado. Todos los cambios hechos en una rama queda registrado como una fusion distinta lo que facilita revisar el historial y entender que se hizo y cuando, sobre todo si muchas personas estan trabajando en paralelo.
+
+   - **¿Qué problemas podrían surgir al depender excesivamente de commits de fusión?**
+
+Podriamos tener el problema que el historial puede volverse muy ruidoso y dificil, y aun mas si se hacen muchos merges sin control.
 
 ### Ejercicio 3: Crea múltiples commits en una rama.  
    Haz varios cambios y commits en una rama feature.
