@@ -102,6 +102,10 @@ En algunos casos, las fusiones no son tan sencillas y pueden surgir conflictos q
    git init
    ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/ZKt0KXf6/Act5-Ejercicio4-1.png" alt="act5Ejer4.1" width="600" />
+   </div>
+
 2. Crea un archivo index.html y realiza un commit en la rama main:
    ```bash
    echo "<html><body><h1>Proyecto inicial CC3S2</h1></body></html>" > index.html
@@ -109,10 +113,18 @@ En algunos casos, las fusiones no son tan sencillas y pueden surgir conflictos q
    git commit -m "commit inicial del  index.html en main"
    ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/zBZ4Rw42/Act5-Ejercicio4-2.png" alt="act5Ejer4.2" width="900" />
+   </div>
+
 3. Crea y cambia a una nueva rama feature-update:
    ```bash
    git checkout -b feature-update
    ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/9QBBBd4N/Act5-Ejercicio4-3.png" alt="act5Ejer4.3" width="750" />
+   </div>
 
 4. Edita el archivo y realiza un commit en la rama feature-update:
    ```bash
@@ -120,6 +132,10 @@ En algunos casos, las fusiones no son tan sencillas y pueden surgir conflictos q
    git add index.html
    git commit -m "Actualiza ..."
    ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/QCkBrbZ2/Act5-Ejercicio4-4.png" alt="act5Ejer4.4" width="750" />
+   </div>
 
 5. Regresa a la rama main y realiza una edición en el mismo archivo:
    ```bash
@@ -129,10 +145,18 @@ En algunos casos, las fusiones no son tan sencillas y pueden surgir conflictos q
    git commit -m "....index.html"
    ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/L5XdH9cm/Act5-Ejercicio4-5.png" alt="act5Ejer4.5" width="900" />
+   </div>
+
 6. Fusiona la rama feature-update con --no-ff y observa el conflicto:
    ```bash
    git merge --no-ff feature-update
    ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/6pCPx48d/Act5-Ejercicio4-6.png" alt="act5Ejer4.6" width="700" />
+   </div>
 
 7. Git detectará un conflicto en index.html. Abre el archivo y resuelve el conflicto. Elimina las líneas de conflicto generadas por Git (`<<<<<<<`, `=======`, `>>>>>>>`) y crea la versión final del archivo con ambos cambios:
 
@@ -146,21 +170,39 @@ En algunos casos, las fusiones no son tan sencillas y pueden surgir conflictos q
    </html>
    ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/DZSDDjLz/Act5-Ejercicio4-7.png" width="450" />
+      <img src="https://i.postimg.cc/T32tFNXX/Act5-Ejercicio4-8.png" alt="act5Ejer4.8" width="450" />
+   </div>
+
+
 8. Agrega el archivo corregido y completa la fusión:
    ```bash
    git add index.html
    git commit
    ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/cHf7rfNm/Act5-Ejercicio4-9.png" alt="act5Ejer4.9" width="900" />
+   </div>
+
 9. Verifica el historial para confirmar la fusión y el commit de resolución de conflicto:
    ```bash
    git log --graph --oneline
    ```
 
-**Preguntas:**
-- ¿Qué pasos adicionales tuviste que tomar para resolver el conflicto?
-- ¿Qué estrategias podrías emplear para evitar conflictos en futuros desarrollos colaborativos?
+   <div align="center">
+      <img src="https://i.postimg.cc/Pr7LnNgr/Act5-Ejercicio4-10.png" alt="act5Ejer4.10" width="700" />
+   </div>
 
+**Preguntas:**
+- **¿Qué pasos adicionales tuviste que tomar para resolver el conflicto?**
+
+Tuve que abrir los archivos en conflicto, revisar linea por linea, decidir que parte del codigo mantener y luego hacer un commit despues de resolver todo.
+
+- **¿Qué estrategias podrías emplear para evitar conflictos en futuros desarrollos colaborativos?**
+
+Implementaria trabajar en ramas bien separadas y comunicarnos mejor con el equipo sobre que partes del codigo esta tocando cada uno. Tambien nos ayudaria dividir bien las tareas para que no editemos los mismos archivos al mismo tiempo.
 
 ### Ejercicio 5: Comparar los historiales con git log después de diferentes fusiones
 
