@@ -324,6 +324,11 @@ En este ejercicio, aprenderás cómo Git puede fusionar automáticamente cambios
    git commit -m "...linea 2"
    ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/8cy3mGMK/Act5-Ejercicio6-1.png" alt="act5Ejer6.1" width="600" />
+   </div>
+
+
 2. Crea una nueva rama auto-merge y realiza otro commit en file.txt:
    ```bash
    git checkout -b auto-merge
@@ -331,6 +336,11 @@ En este ejercicio, aprenderás cómo Git puede fusionar automáticamente cambios
    git add file.txt
    git commit -m "... linea 3"
    ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/WbFSH0vb/Act5-Ejercicio6-2.png" alt="act5Ejer6.2" width="600" />
+   </div>
+
 
 3. Vuelve a main y realiza cambios no conflictivos en otra parte del archivo:
    ```bash
@@ -340,31 +350,55 @@ En este ejercicio, aprenderás cómo Git puede fusionar automáticamente cambios
    git commit -m "Add footer al archivo file.txt"
    ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/rpnQHjKs/Act5-Ejercicio6-3.png" alt="act5Ejer6.3" width="800" />
+   </div>
+
+
 4. Fusiona la rama auto-merge con main:
    ```bash
    git merge auto-merge
    ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/02VMDB3z/Act5-Ejercicio6-4.png" alt="act5Ejer6.4" width="600" />
+   </div>
+
+
 5. Git debería fusionar los cambios automáticamente sin conflictos.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/HsnsDsZL/Act5-Ejercicio6-5.png" alt="act5Ejer5.9" width="600" />
+   </div>
 
 6. Revertir la fusión: Si decides que la fusión fue un error, puedes revertirla:
    ```bash
    git revert -m 1 HEAD
    ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/q7k5Sgwb/Act5-Ejercicio6-6.png" alt="act5Ejer6.6" width="650" />
+   </div>
+
+
 7. Verifica el historial:
    ```bash
    git log --graph --oneline
    ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/K8Q6Zn1S/Act5-Ejercicio6-7.png" alt="act5Ejer6.7" width="600" />
+   </div>
+
+
 **Preguntas:**
 - **¿Cuándo usarías un comando como git revert para deshacer una fusión?**
 
-
+Lo usaria si la fusion ya se hizo en la rama principal y resulto en errores o rompio algo, git revert permite deshacer los cambios sin perder el rastro de lo que paso.
 
 - **¿Qué tan útil es la función de fusión automática en Git?**
 
-
+Es muy util, la mayoria de veces Git resuelve todo solo y eso ahorra tiempo. Pero cuando hay conflictos igual toca revisarlo manualmente.
 
 ### Ejercicio 7: Fusión remota en un repositorio colaborativo
 
