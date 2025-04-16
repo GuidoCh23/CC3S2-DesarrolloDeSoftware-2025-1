@@ -463,12 +463,38 @@ Configura un proyecto simulado:
    </div>
   
 - Realiza varios cambios en feature1 y feature2 y simula colaboraciones paralelas.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/mkVZJ4Xf/Act5-Ejercicio8-2.png" alt="act5Ejer8.2" width="700" />
+   </div>
+
 - Realiza fusiones utilizando diferentes métodos:
   - Fusiona feature1 con main utilizando `git merge --ff`.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/rsYX5wZm/Act5-Ejercicio8-3.png" alt="act5Ejer8.3" width="600" />
+   </div>
+
   - Fusiona feature2 con main utilizando `git merge --no-ff`.
+ 
+   <div align="center">
+      <img src="https://i.postimg.cc/vmXP4SN8/Act5-Ejercicio8-4.png" alt="act5Ejer8.4" width="900" />
+   </div>
+
   - Haz una rama adicional llamada feature3 y aplasta sus commits utilizando `git merge --squash`.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/3JgzK9YN/Act5-Ejercicio8-5.png" alt="act5Ejer8.5" width="800" />
+   </div>
 
 Analiza el historial de commits:
 
 - Revisa el historial para entender cómo los diferentes métodos de fusión afectan el árbol de commits.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/mZ3Sknzv/Act5-Ejercicio8-6.png" alt="act5Ejer8.6" width="600" />
+   </div>
+
 - Compara los resultados y discute con tus compañeros de equipo cuál sería la mejor estrategia de fusión para proyectos más grandes.
+
+Para proyectos mas grandes creo que seria mejor usar la fusion de no-fast-forward ya que nos permite crear un commit de merge/fusion al fusionar dos ramas, esto es util para identificar en que momento se hizo la fusion y con que rama, pero siempre hay que usarlo con criterio, porque si hacemos varias fusiones no-fast-forward saturara el historial de commits de merges lo que complica el entendimiento de los cambios hechos en el proyecto.
