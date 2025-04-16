@@ -457,6 +457,11 @@ Podemos tener problemas como conflictos de fusion cuando hay varias modificacion
 Configura un proyecto simulado:
 
 - Crea un proyecto con tres ramas: main, feature1, y feature2.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/qqrVLKQ1/Act5-Ejercicio8-1.png" alt="act5Ejer8.1" width="700" />
+   </div>
+  
 - Realiza varios cambios en feature1 y feature2 y simula colaboraciones paralelas.
 - Realiza fusiones utilizando diferentes métodos:
   - Fusiona feature1 con main utilizando `git merge --ff`.
