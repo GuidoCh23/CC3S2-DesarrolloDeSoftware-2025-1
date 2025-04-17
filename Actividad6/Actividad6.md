@@ -7,13 +7,7 @@ Aprender a usar los comandos `git rebase` y `git cherry-pick` para mantener un h
 
 #### **Parte 1: git rebase para mantener un historial lineal**
 
-1. **Introducción a Rebase:**
-
-   El rebase mueve tus commits a una nueva base, dándote un historial lineal y limpio. En lugar de fusionar ramas y mostrar un "commit de merge", el rebase integra los cambios aplicándolos en la parte superior de otra rama.
-
-   - **Caso de uso**: Simplifica la depuración y facilita la comprensión del historial de commits.
-
-2. **Escenario de ejemplo:**
+1. **Escenario de ejemplo:**
 
    - Crea un nuevo repositorio Git y dos ramas, main y new-feature:
      ```bash
@@ -25,6 +19,10 @@ Aprender a usar los comandos `git rebase` y `git cherry-pick` para mantener un h
      $ git commit -m "Commit inicial en main"
      ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/mDPJs6nw/Act6-Ejercicio1-1.png" alt="act6Ejer1.1" width="700" />
+   </div>
+
    - Crea y cambia a la rama new-feature:
      ```bash
      $ git checkout -b new-feature
@@ -33,8 +31,11 @@ Aprender a usar los comandos `git rebase` y `git cherry-pick` para mantener un h
      $ git commit -m "Agregar nueva característica"
      ```
 
-    **Pregunta:** Presenta el historial de ramas obtenida hasta el momento.
+    Presenta el historial de ramas obtenida hasta el momento.
 
+   <div align="center">
+      <img src="https://i.postimg.cc/4NY61R9w/Act6-Ejercicio1-2.png" alt="act6Ejer1.2" width="750" />
+   </div>
 
    Ahora, digamos que se han agregado nuevos commits a main mientras trabajabas en new-feature:
 
@@ -46,29 +47,49 @@ Aprender a usar los comandos `git rebase` y `git cherry-pick` para mantener un h
    $ git commit -m "Update main"
    ```
 
-   Tu gráfico de commits ahora diverge (comprueba esto)
+   <div align="center">
+      <img src="https://i.postimg.cc/nrFxqtc1/Act6-Ejercicio1-3.png" alt="act6Ejer1.3" width="700" />
+   </div>
 
-   > **Tarea**: Realiza el rebase de `new-feature` sobre `main` con los siguientes comandos:
+   Tu gráfico de commits ahora diverge
+
+   <div align="center">
+      <img src="https://i.postimg.cc/bNdcPgGd/Act6-Ejercicio1-4.png" alt="act6Ejer1.4" width="700" />
+   </div>
+
+   Realiza el rebase de `new-feature` sobre `main` con los siguientes comandos:
    ```bash
    $ git checkout new-feature
    $ git rebase main
    ```
 
-3. **Revisión:**
+   <div align="center">
+      <img src="https://i.postimg.cc/TPPfyx1q/Act6-Ejercicio1-5.png" alt="act6Ejer1.5" width="700" />
+   </div>
+
+2. **Revisión:**
 
    Después de realizar el rebase, visualiza el historial de commits con:
    ```bash
    $ git log --graph –oneline
    ```
 
-4. **Momento de fusionar y completar el proceso de git rebase:**
+   <div align="center">
+      <img src="https://i.postimg.cc/hvNfsjzB/Act6-Ejercicio1-6.png" alt="act6Ejer1.6" width="700" />
+   </div>
+
+3. **Momento de fusionar y completar el proceso de git rebase:**
    ```bash
    # Cambiar a 'main' y realizar una fusión fast-forward
    $ git checkout main
    $ git merge new-feature
    ```
-   Cuando se realiza una fusión *fast-forward*, las HEADs de las ramas main y new-feature serán los commits correspondientes.
 
+   <div align="center">
+      <img src="https://i.postimg.cc/hGg8qCCd/Act6-Ejercicio1-7.png" alt="act6Ejer1.7" width="650" />
+   </div>
+
+   Cuando se realiza una fusión *fast-forward*, las HEADs de las ramas main y new-feature serán los commits correspondientes.
 
 #### Parte 2: **git cherry-pick para la integración selectiva de commit**
 
