@@ -160,7 +160,7 @@ Aprender a usar los comandos `git rebase` y `git cherry-pick` para mantener un h
 
    El commit donde se agrega LICENSE.txt en la rama add-base-documents, su hash es fbb60b6 pero vemos que despues del cherry-pick en main su hash es 16981e4. 
 
-##### **Preguntas de discusión:**
+#### **Preguntas de discusión:**
 
 1. ¿Por qué se considera que rebase es más útil para mantener un historial de proyecto lineal en comparación con merge?
 
@@ -207,40 +207,38 @@ Por ejemplo al final del sprint descubrimos que solo dos correcciones criticas d
    **Instrucciones:**
 
    - Crea un repositorio y haz algunos commits en la rama main.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/sxwTLtnP/Act6-Ejercicio3-1.png" alt="act6Ejer3.4" width="700" />
+   </div>
+
    - Crea una rama feature, agrega nuevos commits, y luego realiza algunos commits adicionales en main.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/sgtwbPJL/Act6-Ejercicio3-2.png" alt="act6Ejer3.4" width="700" />
+   </div>
+
    - Realiza un rebase de feature sobre main.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/FFDGhXZ3/Act6-Ejercicio3-3.png" alt="act6Ejer3.4" width="650" />
+   </div>
+     
    - Finalmente, realiza una fusión fast-forward de feature con main.
+  
+   <div align="center">
+      <img src="https://i.postimg.cc/vTkVDhDF/Act6-Ejercicio3-4.png" alt="act6Ejer3.4" width="650" />
+   </div>
 
    **Preguntas:**
 
-   - ¿Qué sucede con el historial de commits después del rebase?  
+   - ¿Qué sucede con el historial de commits después del rebase?
+
+Después de realizar un git rebase de la rama feature sobre main, el historial de commits cambia de forma que los commits de feature se reescriben y se colocan "encima" de los commits mas recientes de main. Esto hace que la historia parezca lineal como si los cambios en feature hubieran ocurrido despues de los de main aunque originalmente hayan sido paralelos en diferentes ramas.
+
    - ¿En qué situación aplicarías una fusión fast-forward en un proyecto ágil?
 
-   **Comandos:**
-   ```bash
-   $ mkdir scrum-workflow
-   $ cd scrum-workflow
-   $ git init
-   $ echo "Commit inicial en main" > mainfile.md
-   $ git add mainfile.md
-   $ git commit -m "Commit inicial en main"
-
-   $ git checkout -b feature
-   $ echo "Nueva característica en feature" > featurefile.md
-   $ git add featurefile.md
-   $ git commit -m "Commit en feature"
-
-   $ git checkout main
-   $ echo "Actualización en main" >> mainfile.md
-   $ git add mainfile.md
-   $ git commit -m "Actualización en main"
-
-   $ git checkout feature
-   $ git rebase main
-
-   $ git checkout main
-   $ git merge feature --ff-only
-   ```
+Lo usaria cuando la rama de desarrollo (por ejemplo feature) esta completamente actualizada respecto a main es decir cuando main no ha tenido cambios nuevos desde que se creo feature. En este caso al fusionar, Git simplemente "avanza" el puntero de main hacia el ultimo commit de feature sin crear un commit extra de fusion. En un proyecto agil esto lo aplicariamos al final de un sprint si los cambios en feature ya fueron probados y revisados y se quiere integrar de forma limpia ya que fast-forward preserva una linea de tiempo clara y continua que refleje bien la evolucion del proyecto.
 
 2. **Cherry-pick para integración selectiva en un pipeline CI/CD**
 
@@ -250,14 +248,39 @@ Por ejemplo al final del sprint descubrimos que solo dos correcciones criticas d
    **Instrucciones:**
 
    - Crea un repositorio con una rama main y una rama feature.
+  
+   <div align="center">
+      <img src="https://i.postimg.cc/yNhjdg5G/Act6-Ejercicio2-4.png" alt="act6Ejer2.4" width="650" />
+   </div>
+
    - Haz varios commits en la rama feature, pero solo selecciona uno o dos commits específicos que consideres listos para producción.
+  
+   <div align="center">
+      <img src="https://i.postimg.cc/yNhjdg5G/Act6-Ejercicio2-4.png" alt="act6Ejer2.4" width="650" />
+   </div>
+
    - Realiza un cherry-pick de esos commits desde feature a main.
+  
+   <div align="center">
+      <img src="https://i.postimg.cc/yNhjdg5G/Act6-Ejercicio2-4.png" alt="act6Ejer2.4" width="650" />
+   </div>
+
    - Verifica que los commits cherry-picked aparezcan en main.
+  
+   <div align="center">
+      <img src="https://i.postimg.cc/yNhjdg5G/Act6-Ejercicio2-4.png" alt="act6Ejer2.4" width="650" />
+   </div>
+
 
    **Preguntas:**
 
-   - ¿Cómo utilizarías cherry-pick en un pipeline de CI/CD para mover solo ciertos cambios listos a producción?  
+   - ¿Cómo utilizarías cherry-pick en un pipeline de CI/CD para mover solo ciertos cambios listos a producción?
+  
+
+
    - ¿Qué ventajas ofrece cherry-pick en un flujo de trabajo de DevOps?
+  
+
 
    **Comandos:**
    ```bash
