@@ -308,8 +308,8 @@ En esta fase del sprint, los equipos Scrum deciden qué historias de usuario van
       <img src="https://i.postimg.cc/9QM7MF3G/Act6-Ejercicio5-3.png" alt="act6Ejer5.3" width="630" />
    </div>
 
-**Pregunta:** ¿Por qué es importante trabajar en ramas de funcionalidades separadas durante un sprint?
-
+**Pregunta:** ¿Por qué es importante trabajar en ramas de funcionalidades separadas durante un sprint?<br>
+Trabajar en ramas de funcionalidades separadas durante un sprint es importante porque nos permite que cada desarrollador o equipo trabaje de forma aislada en una tarea especifica sin interferir con el trabajo de los demas.
 
 #### **Fase 2: Desarrollo del sprint (sprint execution)**
 
@@ -333,8 +333,8 @@ A medida que los desarrolladores trabajan en sus respectivas historias de usuari
       <img src="https://i.postimg.cc/xCLT6Bmx/Act6-Ejercicio5-5.png" alt="act6Ejer5.5" width="630" />
    </div>
 
-**Pregunta:** ¿Qué ventajas proporciona el rebase durante el desarrollo de un sprint en términos de integración continua?
-
+**Pregunta:** ¿Qué ventajas proporciona el rebase durante el desarrollo de un sprint en términos de integración continua?<br>
+Ofrece como ventaja que el historial de cambios se mantiene limpio y ordenado, lo que nos facilita mucho el seguimiento del trabajo durante el sprint. Ademas al usar rebase podemos asegurarnos de que la rama en la que estamos trabajando este siempre actualizada con los ultimos cambios de main, sin necesidad de generar commits de merge que ensucien el historial. Esto hace que la integracion continua sea mas fluida ya que se reducen los conflictos y el codigo se puede probar y desplegar con mayor confianza.
 
 #### **Fase 3: Revisión del sprint (sprint review)**
 
@@ -358,8 +358,8 @@ En esta fase, es posible que algunas funcionalidades estén listas para ser most
       <img src="https://i.postimg.cc/fyr2dBKw/Act6-Ejercicio5-7.png" alt="act6Ejer5.7" width="630" />
    </div>
 
-**Pregunta:** ¿Cómo ayuda `git cherry-pick` a mostrar avances de forma selectiva en un sprint review?
-
+**Pregunta:** ¿Cómo ayuda `git cherry-pick` a mostrar avances de forma selectiva en un sprint review?<br>
+git cherry-pick nos ayuda seleccionando solo los commits que estan completamente listos y funcionales para llevarlos a la rama principal antes del sprint review. Esto es nos es muy util porque a veces estamos trabajando en varias partes de una funcionalidad pero no todas estan terminadas o probadas. Con cherry-pick podemos mostrar solo los avances que si estan listos sin tener que fusionar toda la rama lo cual nos da una imagen mas clara y controlada del progreso real del equipo durante la revision del sprint.
 
 #### **Fase 4: Retrospectiva del sprint (sprint retrospective)**
 
@@ -388,8 +388,12 @@ Durante un sprint, pueden surgir conflictos al intentar integrar diferentes rama
       <img src="https://i.postimg.cc/6QZ7R0rB/Act6-Ejercicio5-11.png" alt="act6Ejer5.11" width="400" />
    </div>
 
-**Pregunta**: ¿Cómo manejas los conflictos de fusión al final de un sprint? ¿Cómo puede el equipo mejorar la comunicación para evitar conflictos grandes?
-
+**Pregunta**: 
+- ¿Cómo manejas los conflictos de fusión al final de un sprint?<br>
+Cuando hay conflictos de fusion al final del sprint hay que manejarlo comparando cuidadosamente los cambios en cada archivo entendiendo que aporto cada parte y hablando con el autor del otro cambio, asi para tener una fusion existosa y correcta.
+  
+- ¿Cómo puede el equipo mejorar la comunicación para evitar conflictos grandes?<br>
+Para evitar conflictos grandes el equipo puede comunicarse mejor informando cuando estan trabajando en los mismos archivos o funcionalidades. Tambien ayudaria hacer pull mas seguido, usar ramas pequeñas y revisar los cambios entre todos los miembros del equipo con regularidad.
 
 #### **Fase 5: Fase de desarrollo, automatización de integración continua (CI) con git rebase**
 
@@ -413,7 +417,134 @@ En un entorno CI, es común automatizar ciertas operaciones de Git para asegurar
       <img src="https://i.postimg.cc/J0P6JFvF/Act6-Ejercicio5-13.png" alt="act6Ejer5.13" width="700" />
    </div>
 
-**Pregunta**: ¿Qué ventajas y desventajas observas al automatizar el rebase en un entorno de CI/CD?
+**Pregunta**: ¿Qué ventajas y desventajas observas al automatizar el rebase en un entorno de CI/CD?<br>
+Automatizar el rebase en un entorno CI/CD tiene como ventaja que nos asegura que las ramas esten siempre actualizadas con la ultima version de main lo que reduce conflictos y mantiene el historial limpio. Ademas nos ahorra tiempo al no tener que hacerlo manualmente. La desventaja es que si ocurre un conflicto durante el rebase automatico puede detener el pipeline y requerir intervencion manual lo que nos puede complicar un poco el flujo si no se gestiona bien.
 
+### **Navegando conflictos y versionado en un entorno devOps**
 
+**Objetivo:**  
+Gestionar conflictos en Git, realizar fusiones complejas, utilizar herramientas para comparar y resolver conflictos, aplicar buenas prácticas en el manejo del historial de versiones  y usar el versionado semántico en un entorno de integración continua (CI).
+
+**Herramientas:**
+
+- Git  
+- Un entorno de desarrollo (Visual Studio Code, terminal, etc.)  
+- Un repositorio en GitHub o GitLab (opcional, puede ser local)
+
+**Contexto:**  
+En un entorno de desarrollo colaborativo, los conflictos son inevitables cuando varios desarrolladores trabajan en la misma base de código. Resolver estos conflictos es crucial para mantener un flujo de trabajo eficiente en DevOps.
+
+Los conflictos ocurren cuando dos ramas modifican la misma línea de un archivo y luego se intenta fusionarlas. Git no puede decidir qué cambio priorizar, por lo que la resolución manual es necesaria.
+
+#### **Ejemplo:**
+
+1. **Inicialización del proyecto y creación de ramas**
+
+   - **Paso 1**: Crea un nuevo proyecto en tu máquina local.
+     ```bash
+     $ mkdir proyecto-colaborativo
+     $ cd proyecto-colaborativo
+     ```
+   - **Paso 2**: Inicializa Git en tu proyecto.
+     ```bash
+     $ git init
+     ```
+   - **Paso 3**: Crea un archivo de texto llamado `archivo_colaborativo.txt` y agrega algún contenido inicial.
+     ```bash
+     $ echo "Este es el contenido inicial del proyecto" > archivo_colaborativo.txt
+     ```
+   - **Paso 4**: Agrega el archivo al área de staging y haz el primer commit.
+     ```bash
+     $ git add .
+     $ git commit -m "Commit inicial con contenido base"
+     ```
+   - **Paso 5**: Crea dos ramas activas: main y feature-branch.
+     ```bash
+     $ git branch feature-branch  # Crear una nueva rama
+     ```
+   - **Paso 6**: Haz checkout a la rama feature-branch y realiza un cambio en el archivo `archivo_colaborativo.txt`.
+     ```bash
+     $ git checkout feature-branch
+     $ echo "Este es un cambio en la feature-branch" >> archivo_colaborativo.txt
+     $ git add .
+     $ git commit -m "Cambios en feature-branch"
+     ```
+   - **Paso 7**: Regresa a la rama main y realiza otro cambio en la misma línea del archivo `archivo_colaborativo.txt`.
+     ```bash
+     $ git checkout main
+     $ echo "Este es un cambio en la rama main" >> archivo_colaborativo.txt
+     $ git add .
+     $ git commit -m "Cambios en main"
+     ```
+
+2. **Fusión y resolución de conflictos**
+
+   - **Paso 1**: Intenta fusionar feature-branch en main. Se espera que surjan conflictos de fusión.
+     ```bash
+     $ git merge feature-branch
+     ```
+   - **Paso 2**: Usa `git status` para identificar los archivos en conflicto. Examina los archivos afectados y resuelve manualmente los conflictos, conservando las líneas de código más relevantes para el proyecto.
+     ```bash
+     $ git status
+     $ git checkout --theirs <archivo>  # Si decides aceptar los cambios de feature-branch
+     $ git checkout --ours <archivo>    # Si decides aceptar los cambios de main
+     ```
+   - **Paso 3**: Una vez resueltos los conflictos, commitea los archivos y termina la fusión
+     ```bash
+     $ git add .
+     $ git commit -m "Conflictos resueltos"
+     ```
+
+3. **Simulación de fusiones y uso de git diff**
+
+   - **Paso 1**: Simula una fusión usando `git merge --no-commit --no-ff` para ver cómo se comportarían los cambios antes de realizar el commit.
+     ```bash
+     $ git merge --no-commit --no-ff feature-branch
+     $ git diff --cached  # Ver los cambios en el área de staging
+     $ git merge --abort  # Abortar la fusión si no es lo que se esperaba
+     ```
+
+4. **Uso de git mergetool**
+
+   - **Paso 1**: Configura git mergetool con una herramienta de fusión visual (puedes usar meld, vimdiff, o Visual Studio Code).
+     ```bash
+     $ git config --global merge.tool <nombre-herramienta>
+     $ git mergetool
+     ```
+   - **Paso 2**: Usa la herramienta gráfica para resolver un conflicto de fusión.
+
+5. **Uso de git revert y git reset**
+
+   - **Paso 1**: Simula la necesidad de revertir un commit en main debido a un error. Usa `git revert` para crear un commit que deshaga los cambios.
+     ```bash
+     $ git revert <commit_hash>
+     ```
+   - **Paso 2**: Realiza una prueba con `git reset --mixed` para entender cómo reestructurar el historial de commits sin perder los cambios no commiteados.
+     ```bash
+     $ git reset --mixed <commit_hash>
+     ```
+
+6. **Versionado semántico y etiquetado**
+
+   - **Paso 1**: Aplica versionado semántico al proyecto utilizando tags para marcar versiones importantes.
+     ```bash
+     $ git tag -a v1.0.0 -m "Primera versión estable"
+     $ git push origin v1.0.0
+     ```
+
+7. **Aplicación de git bisect para depuración**
+
+   - **Paso 1**: Usa `git bisect` para identificar el commit que introdujo un error en el código.
+     ```bash
+     $ git bisect start
+     $ git bisect bad   # Indica que la versión actual tiene un error
+     $ git bisect good <último_commit_bueno>
+     # Continúa marcando como "good" o "bad" hasta encontrar el commit que introdujo el error
+     $ git bisect reset  # Salir del modo bisect
+     ```
+
+8. **Documentación y reflexión**
+
+   - **Paso 1**: Documenta todos los comandos usados y los resultados obtenidos en cada paso.
+   - **Paso 2**: Reflexiona sobre la utilidad de cada comando en un flujo de trabajo de DevOps.
 
