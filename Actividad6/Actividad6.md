@@ -250,25 +250,25 @@ Lo usaria cuando la rama de desarrollo (por ejemplo feature) esta completamente 
    - Crea un repositorio con una rama main y una rama feature.
   
    <div align="center">
-      <img src="https://i.postimg.cc/yNhjdg5G/Act6-Ejercicio2-4.png" alt="act6Ejer2.4" width="650" />
+      <img src="https://i.postimg.cc/bJvbphnd/Act6-Ejercicio4-1.png" alt="act6Ejer4.1" width="650" />
    </div>
 
    - Haz varios commits en la rama feature, pero solo selecciona uno o dos commits específicos que consideres listos para producción.
   
    <div align="center">
-      <img src="https://i.postimg.cc/yNhjdg5G/Act6-Ejercicio2-4.png" alt="act6Ejer2.4" width="650" />
+      <img src="https://i.postimg.cc/PxLzsw0P/Act6-Ejercicio4-2.png" alt="act6Ejer4.2" width="690" />
    </div>
 
    - Realiza un cherry-pick de esos commits desde feature a main.
   
    <div align="center">
-      <img src="https://i.postimg.cc/yNhjdg5G/Act6-Ejercicio2-4.png" alt="act6Ejer2.4" width="650" />
+      <img src="https://i.postimg.cc/Prnb9Ny5/Act6-Ejercicio4-3.png" alt="act6Ejer4.3" width="670" />
    </div>
 
    - Verifica que los commits cherry-picked aparezcan en main.
   
    <div align="center">
-      <img src="https://i.postimg.cc/yNhjdg5G/Act6-Ejercicio2-4.png" alt="act6Ejer2.4" width="650" />
+      <img src="https://i.postimg.cc/DwBqS6TS/Act6-Ejercicio4-4.png" alt="act6Ejer4.4" width="650" />
    </div>
 
 
@@ -276,33 +276,9 @@ Lo usaria cuando la rama de desarrollo (por ejemplo feature) esta completamente 
 
    - ¿Cómo utilizarías cherry-pick en un pipeline de CI/CD para mover solo ciertos cambios listos a producción?
   
-
+Lo utilizaria cuando necesito pasar rapidamente ciertos cambios especificos como una correccion urgente o una mejora puntual, desde una rama de desarrollo a la rama de produccion sin tener que fusionar toda la rama. Asi podemos hacer despliegues mas seguros sin detener el avance del resto del equipo en otras funcionalidades.
 
    - ¿Qué ventajas ofrece cherry-pick en un flujo de trabajo de DevOps?
   
+Una de las mayores ventajas de usar cherry-pick en un flujo de trabajo DevOps es que nos da un control muy preciso sobre que cambios se integran en produccion. No siempre todo lo que se desarrolla esta listo para desplegarse, asi que poder elegir exactamente que commit llevar sin tener que fusionar toda una rama es realmente muy util. Por ejemplo si estamos trabajando en una nueva funcionalidad pero solo una parte de ella ya paso las pruebas y esta aprobada, con cherry-pick podemos mover solo ese fragmento sin afectar lo demas.
 
-
-   **Comandos:**
-   ```bash
-   $ mkdir ci-cd-workflow
-   $ cd ci-cd-workflow
-   $ git init
-   $ echo "Commit inicial en main" > main.md
-   $ git add main.md
-   $ git commit -m "Commit inicial en main"
-
-   $ git checkout -b feature
-   $ echo "Primera característica" > feature1.md
-   $ git add feature1.md
-   $ git commit -m "Agregar primera característica"
-
-   $ echo "Segunda característica" > feature2.md
-   $ git add feature2.md
-   $ git commit -m "Agregar segunda característica"
-
-   $ git checkout main
-   $ git cherry-pick <hash_del_commit1>
-   $ git cherry-pick <hash_del_commit2>
-   ```
-
----
