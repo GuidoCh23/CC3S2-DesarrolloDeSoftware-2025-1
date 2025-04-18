@@ -274,9 +274,9 @@ Lo usaria cuando la rama de desarrollo (por ejemplo feature) esta completamente 
 
    **Preguntas:**
 
-   - ¿Cómo utilizarías cherry-pick en un pipeline de CI/CD para mover solo ciertos cambios listos a producción?
+   - ¿Cómo utilizarías cherry-pick en un pipeline de CI/CD para mover solo ciertos cambios listos a producción?<br>
 Lo utilizaria cuando necesito pasar rapidamente ciertos cambios especificos como una correccion urgente o una mejora puntual, desde una rama de desarrollo a la rama de produccion sin tener que fusionar toda la rama. Asi podemos hacer despliegues mas seguros sin detener el avance del resto del equipo en otras funcionalidades.
 
-   - ¿Qué ventajas ofrece cherry-pick en un flujo de trabajo de DevOps?
+   - ¿Qué ventajas ofrece cherry-pick en un flujo de trabajo de DevOps?<br>
 Una de las mayores ventajas de usar cherry-pick en un flujo de trabajo DevOps es que nos da un control muy preciso sobre que cambios se integran en produccion. No siempre todo lo que se desarrolla esta listo para desplegarse, asi que poder elegir exactamente que commit llevar sin tener que fusionar toda una rama es realmente muy util. Por ejemplo si estamos trabajando en una nueva funcionalidad pero solo una parte de ella ya paso las pruebas y esta aprobada, con cherry-pick podemos mover solo ese fragmento sin afectar lo demas.
 
