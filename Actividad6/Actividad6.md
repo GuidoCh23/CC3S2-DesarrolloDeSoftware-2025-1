@@ -291,22 +291,22 @@ En esta fase del sprint, los equipos Scrum deciden qué historias de usuario van
 **Instrucciones:**
 
 1. Crea un repositorio en Git.
-2. Crea una rama `main` donde estará el código base.
-3. Crea una rama por cada historia de usuario asignada al sprint, partiendo de la rama `main`.
 
-**Comandos:**
-```bash
-$ mkdir scrum-project
-$ cd scrum-project
-$ git init
-$ echo "# Proyecto Scrum" > README.md
-$ git add README.md
-$ git commit -m "Commit inicial en main"
+   <div align="center">
+      <img src="https://i.postimg.cc/P5k7scBs/Act6-Ejercicio5-1.png" alt="act6Ejer5.1" width="500" />
+   </div>
+   
+3. Crea una rama `main` donde estará el código base.
 
-# Crear ramas de historias de usuario
-$ git checkout -b feature-user-story-1
-$ git checkout -b feature-user-story-2
-```
+   <div align="center">
+      <img src="https://i.postimg.cc/MH7yystV/Act6-Ejercicio5-2.png" alt="act6Ejer5.2" width="650" />
+   </div>
+
+4. Crea una rama por cada historia de usuario asignada al sprint, partiendo de la rama `main`.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/9QM7MF3G/Act6-Ejercicio5-3.png" alt="act6Ejer5.3" width="630" />
+   </div>
 
 **Pregunta:** ¿Por qué es importante trabajar en ramas de funcionalidades separadas durante un sprint?
 
@@ -322,20 +322,16 @@ A medida que los desarrolladores trabajan en sus respectivas historias de usuari
 **Instrucciones:**
 
 1. Haz algunos commits en main.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/gjfXx33Q/Act6-Ejercicio5-4.png" alt="act6Ejer5.4" width="700" />
+   </div>
+
 2. Realiza un rebase de la rama `feature-user-story-1` para actualizar su base con los últimos cambios de main.
 
-**Comandos:**
-```bash
-# Simula cambios en la rama main
-$ git checkout main
-$ echo "Actualización en main" > updates.md
-$ git add updates.md
-$ git commit -m "Actualizar main con nuevas funcionalidades"
-
-# Rebase de la rama feature-user-story-1 sobre main
-$ git checkout feature-user-story-1
-$ git rebase main
-```
+   <div align="center">
+      <img src="https://i.postimg.cc/xCLT6Bmx/Act6-Ejercicio5-5.png" alt="act6Ejer5.5" width="630" />
+   </div>
 
 **Pregunta:** ¿Qué ventajas proporciona el rebase durante el desarrollo de un sprint en términos de integración continua?
 
@@ -351,23 +347,16 @@ En esta fase, es posible que algunas funcionalidades estén listas para ser most
 **Instrucciones:**
 
 1. Realiza algunos commits en `feature-user-story-2`.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/Gpw5RfVn/Act6-Ejercicio5-6.png" alt="act6Ejer5.6" width="630" />
+   </div>
+
 2. Haz cherry-pick de los commits que estén listos para mostrarse a los stakeholders durante la revisión del sprint.
 
-**Comandos:**
-```bash
-$ git checkout feature-user-story-2
-$ echo "Funcionalidad lista" > feature2.md
-$ git add feature2.md
-$ git commit -m "Funcionalidad lista para revisión"
-
-$ echo "Funcionalidad en progreso" > progress.md
-$ git add progress.md
-$ git commit -m "Funcionalidad aún en progreso"
-
-# Ahora selecciona solo el commit que esté listo
-$ git checkout main
-$ git cherry-pick <hash_del_commit_de_feature-lista>
-```
+   <div align="center">
+      <img src="https://i.postimg.cc/fyr2dBKw/Act6-Ejercicio5-7.png" alt="act6Ejer5.7" width="630" />
+   </div>
 
 **Pregunta:** ¿Cómo ayuda `git cherry-pick` a mostrar avances de forma selectiva en un sprint review?
 
@@ -383,25 +372,21 @@ Durante un sprint, pueden surgir conflictos al intentar integrar diferentes rama
 **Instrucciones:**
 
 1. Realiza cambios en `feature-user-story-1` y `feature-user-story-2` que resulten en conflictos.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/d0PpQsn4/Act6-Ejercicio5-8.png" alt="act6Ejer5.8" width="800" />
+   </div>
+
 2. Intenta hacer merge de ambas ramas con main y resuelve los conflictos.
 
-**Comandos:**
-```bash
-$ git checkout feature-user-story-1
-$ echo "Cambio en la misma línea" > conflicted-file.md
-$ git add conflicted-file.md
-$ git commit -m "Cambio en feature 1"
+   <div align="center">
+      <img src="https://i.postimg.cc/tTrB6pt0/Act6-Ejercicio5-9.png" alt="act6Ejer5.9" width="750" />
+   </div>
 
-$ git checkout feature-user-story-2
-$ echo "Cambio diferente en la misma línea" > conflicted-file.md
-$ git add conflicted-file.md
-$ git commit -m "Cambio en feature 2"
-
-# Intentar hacer merge en main
-$ git checkout main
-$ git merge feature-user-story-1
-$ git merge feature-user-story-2
-```
+   <div align="center">
+      <img src="https://i.postimg.cc/BQJx0dxH/Act6-Ejercicio5-10.png" width="500" />
+      <img src="https://i.postimg.cc/6QZ7R0rB/Act6-Ejercicio5-11.png" alt="act6Ejer5.11" width="400" />
+   </div>
 
 **Pregunta**: ¿Cómo manejas los conflictos de fusión al final de un sprint? ¿Cómo puede el equipo mejorar la comunicación para evitar conflictos grandes?
 
@@ -417,34 +402,18 @@ En un entorno CI, es común automatizar ciertas operaciones de Git para asegurar
 **Instrucciones:**
 
 1. Configura un hook `pre-push` que haga un rebase automático de la rama `main` sobre la rama de funcionalidad antes de que el push sea exitoso.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/ZnZ26pRW/Act6-Ejercicio5-12.png" alt="act6Ejer5.12" width="700" />
+   </div>
+
 2. Prueba el hook haciendo push de algunos cambios en la rama `feature-user-story-1`.
 
-**Comandos:**
-```bash
-# Dentro de tu proyecto, crea un hook pre-push
-$ nano .git/hooks/pre-push
-
-# Agrega el siguiente script para automatizar el rebase
-#!/bin/bash
-git fetch origin main
-git rebase origin/main
-
-# Haz el archivo ejecutable
-$ chmod +x .git/hooks/pre-push
-
-# Simula cambios y haz push
-$ git checkout feature-user-story-1
-$ echo "Cambios importantes" > feature1.md
-$ git add feature1.md
-$ git commit -m "Cambios importantes en feature 1"
-$ git push origin feature-user-story-1
-```
+   <div align="center">
+      <img src="https://i.postimg.cc/J0P6JFvF/Act6-Ejercicio5-13.png" alt="act6Ejer5.13" width="700" />
+   </div>
 
 **Pregunta**: ¿Qué ventajas y desventajas observas al automatizar el rebase en un entorno de CI/CD?
-
-
-
-
 
 
 
