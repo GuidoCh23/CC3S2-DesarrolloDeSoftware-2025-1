@@ -656,12 +656,16 @@ git bisect nos permite encontrar el commit exacto que introdujo un error mediant
    **Pregunta**:  
    ¿Cómo utilizarías los comandos `git checkout --ours` y `git checkout --theirs` para resolver este conflicto de manera rápida y eficiente? Explica cuándo preferirías usar cada uno de estos comandos y cómo impacta en la pipeline de CI/CD. ¿Cómo te asegurarías de que la resolución elegida no comprometa la calidad del código?
 
+En nuestro sprint agil al enfrentar un conflicto entre los equipos A y B por cambios en el mismo archivo de configuracion usariamos git checkout --ours cuando creamos que los cambios de nuestro equipo (A) son los que deben prevalecer. Por el contrario usariamos git checkout --theirs cuando los cambios del equipo B sean mas importantes o correctos para el proyecto. La decision de cualquiera de estas, impacta directamente en nuestra pipeline de CI/CD ya que elegir incorrectamente podria introducir errores o retrasar entregas. Para asegurar la calidad antes de confirmar cualquier resolucion hariamos una reunion rapida entre ambos equipos para revisar los cambios y ejecutariamos pruebas locales completas, asegurando que la solucion elegida mantenga la integridad del sistema.
+
 2. **Ejercicio para git diff**
 
    **Contexto**: Durante una revisión de código en un entorno ágil, se observa que un pull request tiene una gran cantidad de cambios, muchos de los cuales no están relacionados con la funcionalidad principal. Estos cambios podrían generar conflictos con otras ramas en la pipeline de CI/CD.
 
    **Pregunta**:  
    Utilizando el comando `git diff`, ¿cómo compararías los cambios entre ramas para identificar diferencias específicas en archivos críticos? Explica cómo podrías utilizar `git diff feature-branch..main` para detectar posibles conflictos antes de realizar una fusión y cómo esto contribuye a mantener la estabilidad en un entorno ágil con CI/CD.
+
+Durante nuestra revision de codigo usariamos git diff feature-branch..main para identificar especificamente que archivos criticos han cambiado entre ramas. Ahora si queremos enfocarnos en un archivo particular podriamos ejecutar git diff feature-branch..main archivo_especifico, esto nos ayuda a detectar posibles conflictos antes de intentar la fusion. En nuestro entorno agil con CI/CD esta practica nos ahorra tiempo  al evitar fusiones problematicas que podrian romper el pipeline, permitiendonos identificar tempranamente cambios que necesitan coordinacion entre equipos.
 
 3. **Ejercicio para git merge --no-commit --no-ff**
 
@@ -670,12 +674,16 @@ git bisect nos permite encontrar el commit exacto que introdujo un error mediant
    **Pregunta**:  
    Describe cómo usarías el comando `git merge --no-commit --no-ff` para simular una fusión en tu rama local. ¿Qué ventajas tiene esta práctica en un flujo de trabajo ágil con CI/CD, y cómo ayuda a minimizar errores antes de hacer commits definitivos? ¿Cómo automatizarías este paso dentro de una pipeline CI/CD?
 
+Para simular una fusion sin comprometerla inmediatamente ejecutariamos git merge --no-commit --no-ff feature-branch desde nuestra rama principal, esto nos permite ver exactamente como quedarian los archivos despues de la fusion y ejecutar pruebas locales para verificar que todo funciona correctamente. Si en el caso detectamos problemas simplemente hacemos git merge --abort y no hay daño, esta practica es invaluable en nuestro flujo de trabajo agil ya que nos da la oportunidad de detectar problemas antes de que afecten al resto del equipo o interrumpan el pipeline de CI/CD. Para automatizar esto podriamos añadir un paso de pre-merge en nuestro pipeline que simule la fusion y ejecute las pruebas, enviando alertas si detecta posibles problemas.
+
 4. **Ejercicio para git mergetool**
 
    **Contexto**: Tu equipo de desarrollo utiliza herramientas gráficas para resolver conflictos de manera colaborativa. Algunos desarrolladores prefieren herramientas como vimdiff o Visual Studio Code. En medio de un sprint, varios archivos están en conflicto y los desarrolladores prefieren trabajar en un entorno visual para resolverlos.
 
    **Pregunta**:  
    Explica cómo configurarías y utilizarías `git mergetool` en tu equipo para integrar herramientas gráficas que faciliten la resolución de conflictos. ¿Qué impacto tiene el uso de `git mergetool` en un entorno de trabajo ágil con CI/CD, y cómo aseguras que todos los miembros del equipo mantengan consistencia en las resoluciones?
+
+En nuestro equipo hay que configurar git mergetool eligiendo una herramienta comun como Visual Studio Code con git config --global merge.tool vscode, cuando enfrentemos conflictos durante el sprint simplemente ejecutamos git mergetool para abrir la interfaz grafica que nos muestra claramente las diferencias entre versiones, facilitando la toma de decisiones informando sobre que codigo mantener. git mergetool mejorara notablemente nuestro flujo agil al reducir el tiempo dedicado a resolver conflictos complejos y disminuir errores que podrian afectar el pipeline. Y para mantener la consistencia entre el equipo tenemos que documentar nuestras preferencias de configuracion y ocasionalmente hacemos sesiones cuando lidiamos con conflictos especialmente complicados.
 
 5. **Ejercicio para git reset**
 
@@ -684,12 +692,16 @@ git bisect nos permite encontrar el commit exacto que introdujo un error mediant
    **Pregunta**:  
    Explica las diferencias entre `git reset --soft`, `git reset --mixed` y `git reset --hard`. ¿En qué escenarios dentro de un flujo de trabajo ágil con CI/CD utilizarías cada uno? Describe un caso en el que usarías `git reset --mixed` para corregir un commit sin perder los cambios no commiteados y cómo afecta esto a la pipeline.
 
+git reset --soft mueve el puntero de la rama (HEAD) a un commit anterior y conserva tanto los cambios en el area de staging como en el directorio de trabajo, es util cuando solo quieres rehacer el ultimo commit. git reset --mixed tambien mueve HEAD pero limpia el area de staging dejando los cambios en el directorio de trabajo sin perderse ideal cuando quieres reorganizar los cambios antes de volver a hacer commit. git reset --hard descarta todo, tanto staging y el directorio de trabajo, volviendo al estado exacto del commit anterior lo cual es peligroso si no has guardado tus cambios. En un flujo agil con CI/CD, git reset --mixed es util cuando se detecta que un commit rompio el pipeline, ya que te permite corregir el codigo sin perder el trabajo realizado, podemos hacer git reset --mixed HEAD~1, ajustar el error y luego hacer un nuevo commit limpio que no cause fallos en la integracion continua. Esto evitando que cambios defectuosos lleguen al repositorio remoto o afecten al equipo.
+
 6. **Ejercicio para git revert**
 
    **Contexto**: En un entorno de CI/CD, tu equipo ha desplegado una característica a producción, pero se ha detectado un bug crítico. La rama principal debe revertirse para restaurar la estabilidad, pero no puedes modificar el historial de commits debido a las políticas del equipo.
 
    **Pregunta**:  
    Explica cómo utilizarías `git revert` para deshacer los cambios sin modificar el historial de commits. ¿Cómo te aseguras de que esta acción no afecte la pipeline de CI/CD y permita una rápida recuperación del sistema? Proporciona un ejemplo detallado de cómo revertirías varios commits consecutivos.
+
+Utilizaria git revert para crear un nuevo commit que deshace los cambios problematicos sin alterar el historial. Por ejemplo si ejecutamos git revert abc1234 (hash del commit problematico) esto generara un nuevo commit con los cambios invertidos. Ahora para revertir varios commits consecutivos se puede usar el comando git revert con el rango de commits en orden inverso. Por ejemplo si queremos revertir los tres ultimos commits, ejecutariamos git revert HEAD~2..HEAD (esto aplica los reverts en orden desde el mas antiguo al mas reciente). Esto nos asegura que la rama principal se mantenga estable sin eliminar la evidencia de los cambios previos, permitiendonos que el pipeline procese los nuevos commits como parte del flujo normal. Ademas que se puede verificar que todo funcione correctamente ejecutando pruebas locales o usando entornos de staging antes de hacer git push asi garantizando asi una recuperacion rapida y segura en produccion.
 
 7. **Ejercicio para git stash**
 
@@ -698,11 +710,35 @@ git bisect nos permite encontrar el commit exacto que introdujo un error mediant
    **Pregunta**:  
    Explica cómo utilizarías `git stash` para guardar temporalmente tus cambios y volver a ellos después de haber terminado el hotfix. ¿Qué impacto tiene el uso de `git stash` en un flujo de trabajo ágil con CI/CD cuando trabajas en múltiples tareas? ¿Cómo podrías automatizar el proceso de *stashing* dentro de una pipeline CI/CD?
 
+git stash es una herramienta util para guardar temporalmente los cambios del directorio de trabajo que aun no estan listos para ser committeados. Si surge una urgencia como un hotfix en produccion podemos ejecutar git stash para guardar nuestros cambios actuales y dejar nuestra area de trabajo limpia, luego podemos cambiar a la rama del hotfix con git checkout hotfix-rama y realizar la correccion. Una vez completado y desplegado el hotfix podemos volver a nuestra rama original con git checkout mi-rama y recuperar nuestros cambios con git stash pop. Este flujo propuesto evita la perdida de trabajo y permite una rapida reaccion ante urgencias sin contaminar el codigo en produccion. En un flujo CI/CD git stash no afecta directamente al pipeline ya que los cambios no estan committeados pero es util para desarrolladores que alternan tareas locales. Para automatizarlo podemos incluir un script en el pipeline (por ejemplo en hooks) que haga git stash push -m "stash-auto" antes de hacer checkout a otra rama y luego git stash pop cuando se regrese permitiendo asi una gestion mas fluida del contexto en entornos colaborativos.
+
 8. **Ejercicio para .gitignore**
 
    **Contexto**: Tu equipo de desarrollo ágil está trabajando en varios entornos locales con configuraciones diferentes (archivos de logs, configuraciones personales). Estos archivos no deberían ser parte del control de versiones para evitar confusiones en la pipeline de CI/CD.
 
    **Pregunta**:  
    Diseña un archivo `.gitignore` que excluya archivos innecesarios en un entorno ágil de desarrollo. Explica por qué es importante mantener este archivo actualizado en un equipo colaborativo que utiliza CI/CD y cómo afecta la calidad y limpieza del código compartido en el repositorio.
+
+Ejemplo de archivo .gitignore que excluye archivos innecesarios:
+
+```gitignore
+# Entorno virtual
+venv/
+
+# Archivos compilados
+*.pyc
+__pycache__/
+
+# Configuración de editor
+.vscode/
+.idea/
+
+# Archivos temporales y de logs
+*.log
+*.tmp
+```
+
+Es importante mantener el archivo .gitignore actualizado en un equipo colaborativo con CI/CD porque nos asegura que solo los archivos relevantes para el proyecto se incluyan en el repositorio. Esto permite evita subir archivos innecesarios como configuraciones personales, archivos temporales o generados automaticamente, que podrian causar errores en la integracion continua. Un .gitignore bien gestionado nos contribuye a mantener la limpieza, organizacion y calidad del codigo compartido permitiendo un flujo de trabajo mas agil y eficiente.
+
 
 
