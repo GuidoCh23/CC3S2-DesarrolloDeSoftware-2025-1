@@ -740,5 +740,89 @@ __pycache__/
 
 Es importante mantener el archivo .gitignore actualizado en un equipo colaborativo con CI/CD porque nos asegura que solo los archivos relevantes para el proyecto se incluyan en el repositorio. Esto permite evita subir archivos innecesarios como configuraciones personales, archivos temporales o generados automaticamente, que podrian causar errores en la integracion continua. Un .gitignore bien gestionado nos contribuye a mantener la limpieza, organizacion y calidad del codigo compartido permitiendo un flujo de trabajo mas agil y eficiente.
 
+### **Ejercicios adicionales**
 
+#### **Ejercicio 1: Resolución de conflictos en un entorno ágil**
+
+**Contexto:**  
+Estás trabajando en un proyecto ágil donde múltiples desarrolladores están enviando cambios a la rama principal cada día. Durante una integración continua, se detectan conflictos de fusión entre las ramas de dos equipos que están trabajando en dos funcionalidades críticas. Ambos equipos han modificado el mismo archivo de configuración del proyecto.
+
+**Pregunta:**  
+- **¿Cómo gestionarías la resolución de este conflicto de manera eficiente utilizando Git y manteniendo la entrega continua sin interrupciones?** <br>
+Para gestionar eficientemente un conflicto de fusion en un entorno agil con CI/CD, lo primero que haria seria detectar y aislar el conflicto usando git status tras un intento de git merge. Luego se podemos utilizar una herramienta como git mergetool o resolver el conflicto manualmente en el archivo afectado. Considero que es fundamental comunicarse con ambos equipos involucrados para comprender el proposito de cada cambio y evitar decisiones arbitrarias. Y una vez resuelto el conflicto se hace git add, seguido de git commit para finalizar la fusion.
+
+- **¿Qué pasos seguirías para minimizar el impacto en la CI/CD y asegurar que el código final sea estable?** <br>
+Para minimizar el impacto en la CI/CD lo mejor seria no resolver el problema directamente en la rama principal, sino es mas seguro crear una rama intermedia donde se resuelva el conflicto y se prueben los cambios primero. Asi podemos correr las pruebas de forma local o en un pipeline separada sin afectar al resto del equipo. Y en el caso de que todo esta funcionando bien, hacemos el merge a la rama principal. De esta manera nos aseguramos que el sistema siga funcionando sin interrupciones y que solo llegue codigo limpio y estable a produccion.
+
+#### **Ejercicio 2: Rebase vs. Merge en integraciones ágiles**
+
+**Contexto:**  
+En tu equipo de desarrollo ágil, cada sprint incluye la integración de varias ramas de características. Algunos miembros del equipo prefieren realizar merge para mantener el historial completo de commits, mientras que otros prefieren rebase para mantener un historial lineal.
+
+**Pregunta:**  
+- **¿Qué ventajas y desventajas presenta cada enfoque (merge vs. rebase) en el contexto de la metodología ágil?** <br>
+Usar merge nos ayuda a mantener un historial claro y trazable, mostrando cuando y quien integro una funcionalidad, lo cual es util para revisiones y CI/CD. Por otro lado rebase mantiene un historial mas limpio y lineal, lo que facilita leer los cambios y encontrar errores rapidamente. En la practica muchos equipos combinan ambos, hacen rebase en sus ramas locales antes de subir los cambios y luego usan merge al integrar en la rama principal. Asi mantener un flujo ordenado sin romper el historial ni afectar la entrega continua.
+
+- **¿Cómo impacta esto en la revisión de código, CI/CD, y en la identificación rápida de errores?** <br>
+Merge impacta facilitando la revision por funcionalidad y mejora el control en CI/CD, mientras que rebase crea un historial limpio que ayuda a identificar errores mas rapido.
+
+#### **Ejercicio 3: Git Hooks en un flujo de trabajo CI/CD ágil**
+
+**Contexto:**  
+Tu equipo está utilizando Git y una pipeline de CI/CD que incluye tests unitarios, integración continua y despliegues automatizados. Sin embargo, algunos desarrolladores accidentalmente comiten código que no pasa los tests locales o no sigue las convenciones de estilo definidas por el equipo.
+
+**Pregunta:**  
+- **Diseña un conjunto de Git Hooks que ayudaría a mitigar estos problemas, integrando validaciones de estilo y tests automáticos antes de permitir los commits.** <br>
+   - **Pre-commit hook para validacion de estilo:** Este hook se encargara de verificar que el codigo cumpla con las convenciones de estilo antes de hacer un commit, usariamos flake8 para Python.
+     
+       ```bash
+       #!/bin/sh
+       # Validar estilo de codigo con flake8
+       flake8 .
+       if [ $? -ne 0 ]; then
+          echo "El codigo no sigue las convenciones de estilo. Corrigelas antes de hacer commit."
+          exit 1
+       fi
+       ```
+       
+   - **Pre-push hook para validacion de tests:** Este hook ejecutara los tests unitarios antes de permitir que el codigo se suba al repositorio. Si algun test falla, el git push seria rechazado asegurando que solo el codigo que pasa las pruebas llegue al repositorio central.
+ 
+       ```bash
+       #!/bin/sh
+       # Ejecutar los tests antes de hacer push
+       npm test  # O pytest si es Python
+       if [ $? -ne 0 ]; then
+          echo "Algunos tests han fallado. Corrija los errores antes de hacer push."
+          exit 1
+       fi
+       ```
+
+- **Explica qué tipo de validaciones implementarías y cómo se relaciona esto con la calidad del código y la entrega continua en un entorno ágil.** <br>
+Estas validaciones ayudan a mantener un nivel consistente de calidad del codigo y reducen los errores en la integracion continua. Al automatizar estas comprobaciones antes de los commits y pushes el equipo asegura que el codigo que entra al repositorio ya cumple con los requisitos basicos de estilo y pasa las pruebas unitarias. Esto facilita la entrega continua porque los desarrolladores pueden detectar y corregir problemas locales antes de que lleguen al pipeline de CI/CD, acelerando la integracion y evitando bloqueos o fallos en etapas posteriores del despliegue.
+
+
+
+#### **Ejercicio 4: Estrategias de branching en metodologías ágiles**
+
+**Contexto:**  
+Tu equipo de desarrollo sigue una metodología ágil y está utilizando Git Flow para gestionar el ciclo de vida de las ramas. Sin embargo, a medida que el equipo ha crecido, la gestión de las ramas se ha vuelto más compleja, lo que ha provocado retrasos en la integración y conflictos de fusión frecuentes.
+
+**Pregunta:**  
+- **Explica cómo adaptarías o modificarías la estrategia de branching para optimizar el flujo de trabajo del equipo en un entorno ágil y con integración continua.** <br>
+Para optimizar el flujo de trabajo en un entorno agil con Git Flow es clave fusionar las ramas de caracteristicas con develop varias veces al dia para evitar conflictos grandes. Es recomendable crear ramas de liberacion tan pronto como las funcionalidades principales esten listas y no esperar hasta el final del ciclo, para poder hacer correcciones sin interrumpir el desarrollo. Ademas la integracion continua (CI) debe automatizar las pruebas para detectar problemas temprano y facilitar entregas continuas. Las correcciones urgentes deben ir directamente a master y luego fusionarse también en develop y release. Por último, usar git rebase en lugar de fusiones cuando sea posible ayuda a mantener el historial limpio y evitar commits innecesarios. Este enfoque mejorará la eficiencia del equipo y minimizará los conflictos.
+
+- **Considera cómo podrías integrar feature branches, release branches y hotfix branches de manera que apoyen la entrega continua y minimicen conflictos.** <br>
+Para integrar las feature branches, release branches y hotfix branches de manera que apoyen la entrega continua y minimicen los conflictos, es importante que las feature branches se fusionen frecuentemente con develop para que los cambios se integren de manera continua y no se acumulen grandes diferencias que puedan generar conflictos. Las release branches deben crearse temprano cuando ya se tiene una version estable y estar listas para pruebas y ajustes sin detener el desarrollo en develop. Las hotfix branches deben manejarse rapidamente asegurandose de fusionarlas tanto en master como en develop para mantener ambos entornos actualizados. Esto asegura que cada tipo de rama se mantenga en sincronia y respalde una entrega continua, sin bloquearse entre si ni generar conflictos innecesarios.
+
+#### **Ejercicio 5: Automatización de reversiones con git en CI/CD**
+
+**Contexto:**  
+Durante una integración continua en tu pipeline de CI/CD, se detecta un bug crítico después de haber fusionado varios commits a la rama principal. El equipo necesita revertir los cambios rápidamente para mantener la estabilidad del sistema.
+
+**Pregunta:**  
+- **¿Cómo diseñarías un proceso automatizado con Git y CI/CD que permita revertir cambios de manera eficiente y segura?** <br>
+Empezaria con una deteccion temprana del bug en el pipeline a traves de pruebas automatizadas. Una vez identificado el problema usaria el comando git revert para deshacer los commits problematicos sin afectar el historial. Tambien el pipeline podria ejecutar un script que ejecute el git revert y luego genere un pull request (PR) con los cambios revertidos lo cual permitiria revisarlos antes de fusionarlos. Ademas se ejecutarian pruebas automaticas para garantizar que el sistema este estable antes de fusionar el PR.
+
+- **Describe cómo podrías integrar comandos como `git revert` o `git reset` en la pipeline y cuáles serían los pasos para garantizar que los bugs se reviertan sin afectar el desarrollo en curso.** <br>
+Si el bug es demasiado critico y requiere una reversion mas agresiva podria usarse git reset ya que este comando restablece el repositorio a un commit anterior eliminando los cambios posteriores pero debe manejarse con cuidado ya que altera el historial y puede afectar a otros desarrolladores. Para evitar problemas solo se usaria git reset en situaciones controladas y cuando sea necesario, este proceso debe estar automatizado para minimizar el impacto en el equipo y garantizar que la estabilidad del sistema se mantenga sin interrumpir el flujo de trabajo en curso.
 
