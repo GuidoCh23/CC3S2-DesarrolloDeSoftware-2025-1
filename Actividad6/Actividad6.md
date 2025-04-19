@@ -445,23 +445,48 @@ Los conflictos ocurren cuando dos ramas modifican la misma línea de un archivo 
      $ mkdir proyecto-colaborativo
      $ cd proyecto-colaborativo
      ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/SK3HXbTd/Act6-Ejercicio6-1.png" alt="act6Ejer1.1" width="700" />
+   </div>
+
    - **Paso 2**: Inicializa Git en tu proyecto.
      ```bash
      $ git init
      ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/Lsc09B50/Act6-Ejercicio6-2.png" alt="act6Ejer6.1" width="700" />
+   </div>
+
    - **Paso 3**: Crea un archivo de texto llamado `archivo_colaborativo.txt` y agrega algún contenido inicial.
      ```bash
      $ echo "Este es el contenido inicial del proyecto" > archivo_colaborativo.txt
      ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/GtQMxWQZ/Act6-Ejercicio6-3.png" alt="act6Ejer6.2" width="900" />
+   </div>
+
    - **Paso 4**: Agrega el archivo al área de staging y haz el primer commit.
      ```bash
      $ git add .
      $ git commit -m "Commit inicial con contenido base"
      ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/L68vM0v8/Act6-Ejercicio6-4.png" alt="act6Ejer6.3" width="700" />
+   </div>
+
    - **Paso 5**: Crea dos ramas activas: main y feature-branch.
      ```bash
      $ git branch feature-branch  # Crear una nueva rama
      ```
+     
+   <div align="center">
+      <img src="https://i.postimg.cc/tJwswT2P/Act6-Ejercicio6-5.png" alt="act6Ejer6.4" width="750" />
+   </div>
+
    - **Paso 6**: Haz checkout a la rama feature-branch y realiza un cambio en el archivo `archivo_colaborativo.txt`.
      ```bash
      $ git checkout feature-branch
@@ -469,6 +494,11 @@ Los conflictos ocurren cuando dos ramas modifican la misma línea de un archivo 
      $ git add .
      $ git commit -m "Cambios en feature-branch"
      ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/vTJmXKZt/Act6-Ejercicio6-6.png" alt="act6Ejer6.5" width="900" />
+   </div>
+
    - **Paso 7**: Regresa a la rama main y realiza otro cambio en la misma línea del archivo `archivo_colaborativo.txt`.
      ```bash
      $ git checkout main
@@ -477,23 +507,42 @@ Los conflictos ocurren cuando dos ramas modifican la misma línea de un archivo 
      $ git commit -m "Cambios en main"
      ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/DztnnWty/Act6-Ejercicio6-7.png" alt="act6Ejer6.6" width="700" />
+   </div>
+
 2. **Fusión y resolución de conflictos**
 
    - **Paso 1**: Intenta fusionar feature-branch en main. Se espera que surjan conflictos de fusión.
      ```bash
      $ git merge feature-branch
      ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/vH3yD2pK/Act6-Ejercicio6-8.png" alt="act6Ejer6.8" width="700" />
+   </div>
+
    - **Paso 2**: Usa `git status` para identificar los archivos en conflicto. Examina los archivos afectados y resuelve manualmente los conflictos, conservando las líneas de código más relevantes para el proyecto.
      ```bash
      $ git status
      $ git checkout --theirs <archivo>  # Si decides aceptar los cambios de feature-branch
      $ git checkout --ours <archivo>    # Si decides aceptar los cambios de main
      ```
+git checkout --ours <archivo> / --theirs Nos permite elegir que version del archivo conservar en caso de conflictos. Esto nos ayuda a tomar decisiones rapidas.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/d0TcHsLM/Act6-Ejercicio6-9.png" alt="act6Ejer6.9" width="650" />
+   </div>
+
    - **Paso 3**: Una vez resueltos los conflictos, commitea los archivos y termina la fusión
      ```bash
      $ git add .
      $ git commit -m "Conflictos resueltos"
      ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/x1cw8fGk/Act6-Ejercicio6-10.png" alt="act6Ejer6.10" width="700" />
+   </div>
 
 3. **Simulación de fusiones y uso de git diff**
 
@@ -504,6 +553,12 @@ Los conflictos ocurren cuando dos ramas modifican la misma línea de un archivo 
      $ git merge --abort  # Abortar la fusión si no es lo que se esperaba
      ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/kX5ZYJpj/Act6-Ejercicio6-11.png" alt="act6Ejer6.11" width="900" />
+   </div>
+
+git merge --no-commit --no-ff nos permite visualizar como afectaria una fusion sin aplicar el commit. Nos es util para verificar cambios antes de integrarlos minimizando errores. git diff --cached nos muestra los cambios preparados para el commit, es ideal para revisar lo que vamos a guardar antes de hacerlo. Y git merge --abort que cancela la fusion en curso es util cuando detectas que la integracion no es adecuada o que hay conflictos complejos.
+
 4. **Uso de git mergetool**
 
    - **Paso 1**: Configura git mergetool con una herramienta de fusión visual (puedes usar meld, vimdiff, o Visual Studio Code).
@@ -511,7 +566,23 @@ Los conflictos ocurren cuando dos ramas modifican la misma línea de un archivo 
      $ git config --global merge.tool <nombre-herramienta>
      $ git mergetool
      ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/DZgj5Hdk/Act6-Ejercicio6-12.png" alt="act6Ejer6.12" width="900" />
+   </div>
+
+git config --global merge.tool configura una herramienta visual para ayudarnos a resolver conflictos, esto mejora la comprension y facilita las decisiones en fusiones complejas.
+
    - **Paso 2**: Usa la herramienta gráfica para resolver un conflicto de fusión.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/3NyKTXwR/Act6-Ejercicio6-13.png" alt="act6Ejer6.13" width="900" />
+   </div>
+   <div align="center">
+      <img src="https://i.postimg.cc/Gp23Kn1G/Act6-Ejercicio6-14.png" width="500" />
+      <img src="https://i.postimg.cc/fLSz47yb/Act6-Ejercicio6-15.png" alt="act6Ejer6.15" width="500" />
+   </div>
+
 
 5. **Uso de git revert y git reset**
 
@@ -519,12 +590,25 @@ Los conflictos ocurren cuando dos ramas modifican la misma línea de un archivo 
      ```bash
      $ git revert <commit_hash>
      ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/252bjxCF/Act6-Ejercicio6-16.png" alt="act6Ejer6.16" width="900" />
+   </div>
+
+git revert crea un nuevo commit que deshace los efectos de un commit anterior, esto es seguro porque mantiene el historial y es ideal para entornos colaborativos o produccion.
+
    - **Paso 2**: Realiza una prueba con `git reset --mixed` para entender cómo reestructurar el historial de commits sin perder los cambios no commiteados.
      ```bash
      $ git reset --mixed <commit_hash>
      ```
 
-6. **Versionado semántico y etiquetado**
+   <div align="center">
+      <img src="https://i.postimg.cc/XvHf1WBb/Act6-Ejercicio6-17.png" alt="act6Ejer6.17" width="700" />
+   </div>
+
+git reset --mixed vuelve a un estado anterior del historial pero conserva los cambios en el directorio de trabajo, es util para corregir errores sin perder codigo.
+
+2. **Versionado semántico y etiquetado**
 
    - **Paso 1**: Aplica versionado semántico al proyecto utilizando tags para marcar versiones importantes.
      ```bash
@@ -532,7 +616,13 @@ Los conflictos ocurren cuando dos ramas modifican la misma línea de un archivo 
      $ git push origin v1.0.0
      ```
 
-7. **Aplicación de git bisect para depuración**
+   <div align="center">
+      <img src="https://i.postimg.cc/x8yq7Gpz/Act6-Ejercicio6-18.png" alt="act6Ejer6.18" width="700" />
+   </div>
+
+git tag marca versiones importantes del proyecto no permite identificar puntos clave del desarrollo, facilitando despliegues o entregas.
+
+3. **Aplicación de git bisect para depuración**
 
    - **Paso 1**: Usa `git bisect` para identificar el commit que introdujo un error en el código.
      ```bash
@@ -543,8 +633,76 @@ Los conflictos ocurren cuando dos ramas modifican la misma línea de un archivo 
      $ git bisect reset  # Salir del modo bisect
      ```
 
-8. **Documentación y reflexión**
+   <div align="center">
+      <img src="https://i.postimg.cc/25s6S9PW/Act6-Ejercicio6-19.png" alt="act6Ejer6.19" width="650" />
+   </div>
 
-   - **Paso 1**: Documenta todos los comandos usados y los resultados obtenidos en cada paso.
-   - **Paso 2**: Reflexiona sobre la utilidad de cada comando en un flujo de trabajo de DevOps.
+git bisect nos permite encontrar el commit exacto que introdujo un error mediante busqueda binaria. Es muy util para encontrar en que commit ocurre el primer error, encontradolo de forma optima.
+
+4. **Documentación y reflexión**
+
+   - **Paso 1**: Documenta todos los comandos usados y los resultados obtenidos en cada paso.<br>
+     Se adjuntaron los comandos usados y resultado por medio de imagenes en cada proceso del proyecto de ejemplo.
+     
+   - **Paso 2**: Reflexiona sobre la utilidad de cada comando en un flujo de trabajo de DevOps.<br>
+     Se redacto las reflexiones de los comandos hechos en cada punto del proceso del proyecto de ejemplo
+
+### **Preguntas**
+
+1. **Ejercicio para git checkout --ours y git checkout --theirs**
+
+   **Contexto**: En un sprint ágil, dos equipos están trabajando en diferentes ramas. Se produce un conflicto de fusión en un archivo de configuración crucial. El equipo A quiere mantener sus cambios mientras el equipo B solo quiere conservar los suyos. El proceso de entrega continua está detenido debido a este conflicto.
+
+   **Pregunta**:  
+   ¿Cómo utilizarías los comandos `git checkout --ours` y `git checkout --theirs` para resolver este conflicto de manera rápida y eficiente? Explica cuándo preferirías usar cada uno de estos comandos y cómo impacta en la pipeline de CI/CD. ¿Cómo te asegurarías de que la resolución elegida no comprometa la calidad del código?
+
+2. **Ejercicio para git diff**
+
+   **Contexto**: Durante una revisión de código en un entorno ágil, se observa que un pull request tiene una gran cantidad de cambios, muchos de los cuales no están relacionados con la funcionalidad principal. Estos cambios podrían generar conflictos con otras ramas en la pipeline de CI/CD.
+
+   **Pregunta**:  
+   Utilizando el comando `git diff`, ¿cómo compararías los cambios entre ramas para identificar diferencias específicas en archivos críticos? Explica cómo podrías utilizar `git diff feature-branch..main` para detectar posibles conflictos antes de realizar una fusión y cómo esto contribuye a mantener la estabilidad en un entorno ágil con CI/CD.
+
+3. **Ejercicio para git merge --no-commit --no-ff**
+
+   **Contexto**: En un proyecto ágil con CI/CD, tu equipo quiere simular una fusión entre una rama de desarrollo y la rama principal para ver cómo se comporta el código sin comprometerlo inmediatamente en el repositorio. Esto es útil para identificar posibles problemas antes de completar la fusión.
+
+   **Pregunta**:  
+   Describe cómo usarías el comando `git merge --no-commit --no-ff` para simular una fusión en tu rama local. ¿Qué ventajas tiene esta práctica en un flujo de trabajo ágil con CI/CD, y cómo ayuda a minimizar errores antes de hacer commits definitivos? ¿Cómo automatizarías este paso dentro de una pipeline CI/CD?
+
+4. **Ejercicio para git mergetool**
+
+   **Contexto**: Tu equipo de desarrollo utiliza herramientas gráficas para resolver conflictos de manera colaborativa. Algunos desarrolladores prefieren herramientas como vimdiff o Visual Studio Code. En medio de un sprint, varios archivos están en conflicto y los desarrolladores prefieren trabajar en un entorno visual para resolverlos.
+
+   **Pregunta**:  
+   Explica cómo configurarías y utilizarías `git mergetool` en tu equipo para integrar herramientas gráficas que faciliten la resolución de conflictos. ¿Qué impacto tiene el uso de `git mergetool` en un entorno de trabajo ágil con CI/CD, y cómo aseguras que todos los miembros del equipo mantengan consistencia en las resoluciones?
+
+5. **Ejercicio para git reset**
+
+   **Contexto**: En un proyecto ágil, un desarrollador ha hecho un commit que rompe la pipeline de CI/CD. Se debe revertir el commit, pero se necesita hacerlo de manera que se mantenga el código en el directorio de trabajo sin deshacer los cambios.
+
+   **Pregunta**:  
+   Explica las diferencias entre `git reset --soft`, `git reset --mixed` y `git reset --hard`. ¿En qué escenarios dentro de un flujo de trabajo ágil con CI/CD utilizarías cada uno? Describe un caso en el que usarías `git reset --mixed` para corregir un commit sin perder los cambios no commiteados y cómo afecta esto a la pipeline.
+
+6. **Ejercicio para git revert**
+
+   **Contexto**: En un entorno de CI/CD, tu equipo ha desplegado una característica a producción, pero se ha detectado un bug crítico. La rama principal debe revertirse para restaurar la estabilidad, pero no puedes modificar el historial de commits debido a las políticas del equipo.
+
+   **Pregunta**:  
+   Explica cómo utilizarías `git revert` para deshacer los cambios sin modificar el historial de commits. ¿Cómo te aseguras de que esta acción no afecte la pipeline de CI/CD y permita una rápida recuperación del sistema? Proporciona un ejemplo detallado de cómo revertirías varios commits consecutivos.
+
+7. **Ejercicio para git stash**
+
+   **Contexto**: En un entorno ágil, tu equipo está trabajando en una corrección de errores urgente mientras tienes cambios no guardados en tu directorio de trabajo que aún no están listos para ser committeados. Sin embargo, necesitas cambiar rápidamente a una rama de hotfix para trabajar en la corrección.
+
+   **Pregunta**:  
+   Explica cómo utilizarías `git stash` para guardar temporalmente tus cambios y volver a ellos después de haber terminado el hotfix. ¿Qué impacto tiene el uso de `git stash` en un flujo de trabajo ágil con CI/CD cuando trabajas en múltiples tareas? ¿Cómo podrías automatizar el proceso de *stashing* dentro de una pipeline CI/CD?
+
+8. **Ejercicio para .gitignore**
+
+   **Contexto**: Tu equipo de desarrollo ágil está trabajando en varios entornos locales con configuraciones diferentes (archivos de logs, configuraciones personales). Estos archivos no deberían ser parte del control de versiones para evitar confusiones en la pipeline de CI/CD.
+
+   **Pregunta**:  
+   Diseña un archivo `.gitignore` que excluya archivos innecesarios en un entorno ágil de desarrollo. Explica por qué es importante mantener este archivo actualizado en un equipo colaborativo que utiliza CI/CD y cómo afecta la calidad y limpieza del código compartido en el repositorio.
+
 
