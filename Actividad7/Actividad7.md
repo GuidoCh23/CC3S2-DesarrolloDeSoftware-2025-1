@@ -517,7 +517,7 @@ Escenario: Comer muchos pepinos y esperar el tiempo suficiente
 1. Definimos una nueva prueba unitaria llamada `test_gruñir_si_comido_muchos_pepinos` con Pytest
 
    <div align="center">
-      <img src="https://i.postimg.cc/1t0KyVfG/Act7-8-1.png" alt="act7.8.1" width="600" />
+      <img src="https://i.postimg.cc/1t0KyVfG/Act7-8-1.png" alt="act7.8.1" width="450" />
    </div>
 
 Vemos que verifica si ha comido 10 pepinos y se espera 2 horas, el estómago debe gruñir.
