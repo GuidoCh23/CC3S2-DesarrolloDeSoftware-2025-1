@@ -165,8 +165,8 @@ Ahora ya aparece la rama main, que es la unica rama que tenemos por el momento
 - **Script:** Ejecuta `git checkout -b feature/login` y confirma:
 
   ```
-       Rama 'feature/login' creada y activada.
-     ```
+  Rama 'feature/login' creada y activada.
+  ```
 
    <div align="center">
       <img src="https://i.postimg.cc/hjmNBDVV/PD2-3-2.png" alt="PD2.3.2" width="350" />
