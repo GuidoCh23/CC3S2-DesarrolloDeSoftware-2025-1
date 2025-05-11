@@ -97,7 +97,7 @@ pattern = re.compile(r'(?:(\w+)\s*horas?)?\s*(?:(\w+)\s*minutos?)?\s*(?:(\w+)\s*
 Y finalmente agregue nuevas lineas para que obtenga los segundo de `time_description`, convertir la palabra en numero, en el caso que el numero de segundo esta escrito texto y no en numeros, y modifique el calculo de `total_time_in_hours` para que tome en cuenta los segundos
 
 ```python
-		if match:
+	if match:
             hours_word = match.group(1) or "0"
             minutes_word = match.group(2) or "0"
             seconds_word = match.group(3) or "0" #obtiene los segundos
@@ -106,7 +106,7 @@ Y finalmente agregue nuevas lineas para que obtenga los segundo de `time_descrip
             minutes = convertir_palabra_a_numero(minutes_word)
             seconds = convertir_palabra_a_numero(seconds_word) #pasa la palabra a numero
 			
-			#calcula el tiempo en horas, tomando en cuenta los segundos
+	    #calcula el tiempo en horas, tomando en cuenta los segundos
             total_time_in_hours = hours + (minutes / 60) + (seconds / 3600) 
 ```
 
