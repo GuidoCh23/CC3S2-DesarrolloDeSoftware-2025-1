@@ -609,21 +609,6 @@ Vemos que todos los escenarios Gherkin pasan las pruebas, por lo que todo funcio
    - Ejecución secuencial: 1) Pytest, 2) Behave.  
    - O en etapas separadas para un mejor feedback.
 
-**Ejemplo de test unitario**:
-```python
-def test_pepinos_restantes():
-    belly = Belly()
-    belly.comer(15)
-    assert belly.pepinos_comidos == 15
-```
-
-**Ejemplo Gherkin**:
-```gherkin
-Escenario: Saber cuántos pepinos he comido
-  Dado que he comido 15 pepinos
-  Entonces debería haber comido 15 pepinos
-```
-
 **Solucion**:
 
 1. Definiremos un nueva prueba unitaria llamada  `test_pepinos_restantes` para verificar la cantidad de pepinos comidos
