@@ -396,3 +396,259 @@ Agregue una condicion `elif` en el caso el numero de pepinos es `> 100` nos salt
    </div>
 
 Vemos que hubo un failed, la cual es el escenario Gherkin que hemos agregado, en la que comia 102 pepinos. Por lo que funciona correctamente las condiciones que hemos implementado
+
+### Ejercicio 6: **Escalabilidad con grandes cantidades de pepinos**
+
+**Objetivo**  
+- Asegurar que el sistema no falle ni se ponga lento con cantidades y tiempos muy grandes.
+
+**Instrucciones**  
+1. **Añade** soporte para manejar cantidades de pepinos como 1000 (más allá del límite de validación anterior, o ajusta ese límite para pruebas internas).
+2. **Implementa** un escenario en Gherkin para comer 1000 pepinos y esperar 10 horas.
+3. **Verifica** que el sistema sigue comportándose correctamente (sin timeouts ni errores de rendimiento).
+4. **En un pipeline DevOps**:
+   - Ejecuta pruebas de estrés o de larga duración (puedes simular) para garantizar la robustez.
+   - Mide el tiempo de ejecución para asegurarte de que no aumente drásticamente.
+
+**Ejemplo Gherkin**:
+```gherkin
+Escenario: Comer 1000 pepinos y esperar 10 horas
+  Dado que he comido 1000 pepinos
+  Cuando espero 10 horas
+  Entonces mi estómago debería gruñir
+```
+
+**Solucion**:
+
+1. Modifique `comer` de la clase `Belly` para que acepte como maximo 1000 pepinos
+
+   <div align="center">
+      <img src="https://i.postimg.cc/T3j7FtZC/Act7-6-1.png" alt="act7.6.1" width="600" />
+   </div>
+
+
+2. Agregue un nuevo escenario Gherkin para comer 1000 pepinos y esperar 10 horas
+
+   <div align="center">
+      <img src="https://i.postimg.cc/L8p5mVsJ/Act7-6-2.png" alt="act7.6.2" width="500" />
+   </div>
+
+
+3. Ejecutemos en la terminal el comando `behave` para probar los test BDD
+
+   <div align="center">
+      <img src="https://i.postimg.cc/W4KP1275/Act7-6-3.png" alt="act7.6.3" width="600" />
+   </div>
+
+
+### Ejercicio 7: **Descripciones de tiempo complejas**
+
+**Objetivo**  
+- Ampliar la lógica para manejar descripciones avanzadas tipo `"1 hora, 30 minutos y 45 segundos"`.
+
+**Instrucciones**  
+1. **Refuerza** la expresión regular y parsing para que soporte múltiples separadores (comas, "y", espacios, etc.).
+2. **Implementa** escenarios que cubran al menos 2-3 variaciones complejas en Gherkin.
+3. **Valida** que el total en horas sea exacto (suma de horas, minutos, segundos).
+4. **En un pipeline**:  
+   - Puedes analizar la cobertura de pruebas (coverage) para asegurarte de que la nueva lógica de parsing está completamente testeada.
+
+**Ejemplo Gherkin**:
+```gherkin
+Escenario: Manejar tiempos complejos
+  Dado que he comido 50 pepinos
+  Cuando espero "1 hora, 30 minutos y 45 segundos"
+  Entonces mi estómago debería gruñir
+```
+
+**Solucion**:
+
+1. Modificamos el parsing para que soporte separadores como `","` , `"y"`, `" "`, etc
+
+   <div align="center">
+      <img src="https://i.postimg.cc/DZhyTrP2/Act7-7-1.png" alt="act7.7.1" width="500" />
+   </div>
+
+2.  Implemente 2 escenarios Gherkin en la que se usan tiempos complejas 
+
+   <div align="center">
+      <img src="https://i.postimg.cc/wvbNT4fX/Act7-7-3.png" alt="act7.6.3" width="400" />
+   </div>
+
+3. Ejecutamos `behave` en la terminal para probar que todo este bien
+
+   <div align="center">
+      <img src="https://i.postimg.cc/9Fw3L4y1/Act7-7-2.png" alt="act7.7.2" width="600" />
+   </div>
+
+El test behave pasan correctamente
+
+### Ejercicio 8: **De TDD a BDD – Convertir requisitos técnicos a pruebas en Gherkin**
+
+**Objetivo**  
+- Practicar el paso de una prueba unitaria técnica a un escenario BDD comprensible por el negocio.
+
+**Instrucciones**  
+1. **Escribe** un test unitario básico con Pytest que valide que si se han comido más de 10 pepinos y se espera 2 horas, el estómago gruñe.
+2. **Convierte** ese test unitario en un escenario Gherkin, con la misma lógica, pero más orientado al usuario.
+3. **Implementa** los pasos en Behave (si no existen).
+4. **En un pipeline DevOps**:
+   - Ejecuta primero los tests unitarios (rápidos) y luego los tests de Behave (que pueden ser más lentos y de nivel de integración).
+
+**Ejemplo de test unitario** (TDD):
+```python
+def test_gruñir_si_comido_muchos_pepinos():
+    belly = Belly()
+    belly.comer(15)
+    belly.esperar(2)
+    assert belly.esta_gruñendo() == True
+```
+
+**Ejemplo Gherkin** (BDD):
+```gherkin
+Escenario: Comer muchos pepinos y esperar el tiempo suficiente
+  Dado que he comido 15 pepinos
+  Cuando espero 2 horas
+  Entonces mi estómago debería gruñir
+```
+
+**Solucion**:
+
+1. Definimos una nueva prueba unitaria llamada `test_gruñir_si_comido_muchos_pepinos` con Pytest
+
+   <div align="center">
+      <img src="https://i.postimg.cc/1t0KyVfG/Act7-8-1.png" alt="act7.8.1" width="600" />
+   </div>
+
+Vemos que verifica si ha comido 10 pepinos y se espera 2 horas, el estómago debe gruñir.
+
+2. Convertimos esta prueba unitaria a un escenario Gherkin
+
+   <div align="center">
+      <img src="https://i.postimg.cc/QCyKDjkg/Act7-8-2.png" alt="act7.8.2" width="500" />
+   </div>
+
+3. Ejecutamos los test escribiendo en la terminal `pytest --cov` y `behave`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/j5jjSGjM/Act7-8-3.png" alt="act7.8.3" width="900" />
+   </div>
+
+Vemos que las pruebas con pytest pasan sin problemas
+
+   <div align="center">
+      <img src="https://i.postimg.cc/2SmLf9nK/Act7-8-4.png" alt="act7.8.4" width="600" />
+   </div>
+
+Tambien vemos que las pruebas behave pasan sin problemas
+
+### Ejercicio 9: **Identificación de criterios de aceptación para historias de usuario**
+
+**Objetivo**  
+- Traducir una historia de usuario en criterios de aceptación claros y escenarios BDD.
+
+**Instrucciones**  
+1. **Toma** la historia de usuario:  
+   > "Como usuario que ha comido pepinos, quiero saber si mi estómago va a gruñir después de esperar un tiempo suficiente, para poder tomar una acción."
+2. **Identifica** los criterios de aceptación (por ejemplo, cuántos pepinos y cuánto tiempo se debe esperar).
+3. **Escribe** escenarios Gherkin que reflejen esos criterios.
+4. **Implementa** los pasos en Behave.
+5. **En un pipeline**:
+   - Asegúrate de vincular (por ejemplo, en GitLab Issues o GitHub Issues) los escenarios con la historia de usuario para tener *traceability* (rastreabilidad).
+
+**Ejemplo de escenarios Gherkin**:
+```gherkin
+Escenario: Comer suficientes pepinos y esperar el tiempo adecuado
+  Dado que he comido 20 pepinos
+  Cuando espero 2 horas
+  Entonces mi estómago debería gruñir
+
+Escenario: Comer pocos pepinos y no esperar suficiente tiempo
+  Dado que he comido 5 pepinos
+  Cuando espero 1 hora
+  Entonces mi estómago no debería gruñir
+```
+
+**Solucion**:
+
+1. Recordar que para un escenario Gherkin (BDD) la estructura en español es la siguiente
+
+```gherkin
+Escenario: ...
+  Dado ...
+  Cuando ...
+  Entonces ...
+```
+
+2. Ahora identificamos de una historia de usuario el "numero de pepinos comidos" y "cuanto espero", esto para determinar si su estomago debe gruñir
+
+3. Añadi 2 escenarios Gherking tomando en cuenta lo anteriormente visto
+
+   <div align="center">
+      <img src="https://i.postimg.cc/cLf9xBXz/Act7-9-2.png" alt="act7.9.2" width="500" />
+   </div>
+
+4. Ejecutamos en el terminal el comando `behave` para correr los tests
+
+   <div align="center">
+      <img src="https://i.postimg.cc/yxWp7qbh/Act7-9-1.png" alt="act7.9.1" width="700" />
+   </div>
+
+Vemos que todos los escenarios Gherkin pasan las pruebas, por lo que todo funciona correctamente
+
+### Ejercicio 10: **Escribir pruebas unitarias antes de escenarios BDD**
+
+**Objetivo**  
+- Demostrar la secuencia TDD (tests unitarios) → BDD (escenarios).
+
+**Instrucciones**  
+1. **Escribe** un test unitario para una nueva función, por ejemplo, `pepinos_comidos()`, que retorna el total de pepinos ingeridos.
+2. **Crea** un escenario Gherkin que describe este comportamiento desde el punto de vista del usuario.
+3. **Implementa** los pasos en Behave y verifica que pase la misma validación.
+4. **En un pipeline**:  
+   - Ejecución secuencial: 1) Pytest, 2) Behave.  
+   - O en etapas separadas para un mejor feedback.
+
+**Ejemplo de test unitario**:
+```python
+def test_pepinos_restantes():
+    belly = Belly()
+    belly.comer(15)
+    assert belly.pepinos_comidos == 15
+```
+
+**Ejemplo Gherkin**:
+```gherkin
+Escenario: Saber cuántos pepinos he comido
+  Dado que he comido 15 pepinos
+  Entonces debería haber comido 15 pepinos
+```
+
+**Solucion**:
+
+1. Definiremos un nueva prueba unitaria llamada  `test_pepinos_restantes` para verificar la cantidad de pepinos comidos
+
+   <div align="center">
+      <img src="https://i.postimg.cc/2y9cZY66/Act7-10-1.png" alt="act7.10.1" width="350" />
+   </div>
+
+2. Creamos un nuevo escenario Gherkin
+
+   <div align="center">
+      <img src="https://i.postimg.cc/g2FyBjfp/Act7-10-2.png" alt="act7.10.2" width="400" />
+   </div>
+
+3. Probemos los tests ejecutando en la terminal `pytest --cov` y `behave`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/QMNf0VTt/Act7-10-3.png" alt="act7.10.3" width="1000" />
+   </div>
+
+Vemos que los test `pytest` pasan todas las pruebas correctamente
+
+   <div align="center">
+      <img src="https://i.postimg.cc/vBJLFmc5/Act7-10-4.png" alt="act7.10.4" width="600" />
+   </div>
+
+Tambien el test `behave` pasa correctamente, por lo que el proyecto funciona correctamente
+
