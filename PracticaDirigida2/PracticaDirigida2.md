@@ -161,7 +161,6 @@ Ahora ya aparece la rama main, que es la unica rama que tenemos por el momento
    </div>
      - **Usuario:** Escribe `feature/login`.
      - **Script:** Ejecuta `git checkout -b feature/login` y confirma:
-
        ```
        Rama 'feature/login' creada y activada.
        ```
