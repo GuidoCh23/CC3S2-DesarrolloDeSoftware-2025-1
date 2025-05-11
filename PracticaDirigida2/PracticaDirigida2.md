@@ -152,6 +152,7 @@ Ahora ya aparece la rama main, que es la unica rama que tenemos por el momento
 
    - **Ejemplo B: Crear una nueva rama (Opción b)**
      - **Usuario:** Ingresa `b`, luego el script pregunta:
+       
        ```
        Ingrese el nombre de la nueva rama:
        ```
@@ -159,11 +160,13 @@ Ahora ya aparece la rama main, que es la unica rama que tenemos por el momento
    <div align="center">
       <img src="https://i.postimg.cc/L8THcTmm/PD2-3-1.png" alt="PD2.3.1" width="350" />
    </div>
-     - **Usuario:** Escribe `feature/login`.
-     - **Script:** Ejecuta `git checkout -b feature/login` y confirma:
-       ```
+
+- **Usuario:** Escribe `feature/login`.
+- **Script:** Ejecuta `git checkout -b feature/login` y confirma:
+
+  ```
        Rama 'feature/login' creada y activada.
-       ```
+     ```
 
    <div align="center">
       <img src="https://i.postimg.cc/hjmNBDVV/PD2-3-2.png" alt="PD2.3.2" width="350" />
