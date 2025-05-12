@@ -18,7 +18,7 @@ Nombre: Guido Anthony Chipana Calderon
    ```
 
    <div align="center">
-      <img src="https://i.postimg.cc/y6jfHtKd/PD3-0-1.png" alt="PD3.0.1" width="300" />
+      <img src="https://i.postimg.cc/y6jfHtKd/PD3-0-1.png" alt="PD3.0.1" width="500" />
    </div>
 
 #### Paso 2 – "Hello, World!": tu primer script
