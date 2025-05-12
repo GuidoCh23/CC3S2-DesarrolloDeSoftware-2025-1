@@ -18,7 +18,7 @@ Nombre: Guido Anthony Chipana Calderon
    ```
 
    <div align="center">
-      <img src="https://i.postimg.cc/7YGHpm08/PD2-0-1.png" alt="PD2.0.1" width="300" />
+      <img src="https://i.postimg.cc/y6jfHtKd/PD3-0-1.png" alt="PD3.0.1" width="300" />
    </div>
 
 #### Paso 2 – "Hello, World!": tu primer script
@@ -42,7 +42,7 @@ Nombre: Guido Anthony Chipana Calderon
    ```
 
    <div align="center">
-      <img src="https://i.postimg.cc/7YGHpm08/PD2-0-1.png" alt="PD2.0.1" width="300" />
+      <img src="https://i.postimg.cc/y6jfHtKd/PD3-0-1.png" alt="PD2.0.1" width="300" />
    </div>
 
 
@@ -64,7 +64,7 @@ echo "Entorno: $ENV"
 
 
    <div align="center">
-      <img src="https://i.postimg.cc/7YGHpm08/PD2-0-1.png" alt="PD2.0.1" width="300" />
+      <img src="https://i.postimg.cc/y6jfHtKd/PD3-0-1.png" alt="PD2.0.1" width="300" />
    </div>
 
 #### Paso 4 – Parámetros posicionales
