@@ -57,7 +57,6 @@ Implementa en la clase `Carrito` un método llamado `vaciar()` que elimine todos
 - Crea pruebas en `tests/test_carrito.py` que agreguen varios productos, invoquen `vaciar()` y verifiquen que `obtener_items()` retorne una lista vacía y `calcular_total()` retorne 0.
 
 **Solucion:**
-
 Implemente el metodo `vaciar` en `src/carrito.py` que vacia items con `self.items = []`.
 
    <div align="center">
@@ -89,7 +88,6 @@ Amplía la lógica del carrito para aplicar un descuento solo si el total supera
 - Escribe pruebas para ambos escenarios (condición cumplida y no cumplida).
 
 **Solucion:**
-
 Agregue un nuevo metodo llamado `aplicar_descuento_condicional(porcentaje, minimo)` en la clase `Carrito` que primero verifique si `calcular_total() >= minimo` y si se cumple la condición, aplica el descuento, de lo contrario retorna el total sin descuento.
 
    <div align="center">
@@ -131,7 +129,6 @@ Modifica la clase `Producto` para que incluya un atributo `stock` (cantidad disp
   - Se lanza una excepción al intentar agregar más unidades de las disponibles.
 
 **Solucion:**
-
 Modifique `Producto` en `src/carrito.py` añadiendo `self.stock = stock` en el constructor
 
    <div align="center">
