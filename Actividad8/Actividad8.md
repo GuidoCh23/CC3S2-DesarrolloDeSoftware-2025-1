@@ -11,7 +11,7 @@ Nombre: Guido Anthony Chipana Calderon
 
 Es útil seguir plantillas al hacer pruebas unitarias, y no son una excepción. Kent Beck, el inventor de TDD, descubrió que las pruebas unitarias tenían características en común. Esto se resumió en la estructura llamada **Arrange-Act-Assert (AAA)**.
 
-#### La definición original de AAA
+### La definición original de AAA
 
 La descripción original de AAA se puede encontrar en el wiki de C2: [Arrange-Act-Assert](http://wiki.c2.com/?ArrangeActAssert).
 
@@ -56,6 +56,26 @@ Implementa en la clase `Carrito` un método llamado `vaciar()` que elimine todos
 - Agrega el método `vaciar` en `src/carrito.py` que realice `self.items = []`.
 - Crea pruebas en `tests/test_carrito.py` que agreguen varios productos, invoquen `vaciar()` y verifiquen que `obtener_items()` retorne una lista vacía y `calcular_total()` retorne 0.
 
+**Solucion:**
+Implemente el metodo `vaciar` en `src/carrito.py` que vacia items con `self.items = []`.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/R0zx78wR/EJR8-1-1.png" alt="act8.1.1" width="400" />
+   </div>
+
+Cree la prueba `test_vaciar_items_despues_de_llenar_el carrito` en `tests/test_carrito.py` que agrega dos productos, invoca `vaciar()` y verifica que `obtener_items()` retorne una lista vacía y `calcular_total()` retorne 0
+
+   <div align="center">
+      <img src="https://i.postimg.cc/bwSmR9PN/EJR8-1-4.png" alt="act8.1.2" width="600" />
+   </div>
+
+Al correr las pruebas, ejecutando en la terminal `pytest --cov` obtenemos los siguientes resultados
+
+   <div align="center">
+      <img src="https://i.postimg.cc/MHt4f7Bb/EJR8-1-3.png" alt="act8.1.3" width="800" />
+   </div>
+   
+Vemos que todas las pruebas pasaron sin problema
 
 #### Ejercicio 2: Descuento por compra mínima
 
@@ -67,6 +87,34 @@ Amplía la lógica del carrito para aplicar un descuento solo si el total supera
 - Si se cumple la condición, aplica el descuento; de lo contrario, retorna el total sin descuento.
 - Escribe pruebas para ambos escenarios (condición cumplida y no cumplida).
 
+**Solucion:**
+Agregue un nuevo metodo llamado `aplicar_descuento_condicional(porcentaje, minimo)` en la clase `Carrito` que primero verifique si `calcular_total() >= minimo` y si se cumple la condición, aplica el descuento, de lo contrario retorna el total sin descuento.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/vHjrG027/EJR8-2-1.png" alt="act8.2.1" width="600" />
+   </div>
+
+Cree 2 pruebas unitaras `test_descuento_condicional_cumplida` y `test_descuento_condicional_no_cumplida`:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/R0HFBR6Y/EJR8-2-3.png" alt="act8.2.3" width="600" />
+   </div>
+   
+Este test verifica que si cumple la condicion, se aplique el descuento, por lo que devolvera el total con el descuento aplicado
+
+   <div align="center">
+      <img src="https://i.postimg.cc/y81yQDGt/EJR8-2-2.png" alt="act8.2.2" width="600" />
+   </div>
+
+Este test verifica si no cumple la condicion, no se aplicara el descuento, por lo tanto devolvera el mismo total
+
+Al correr las pruebas, ejecutando en la terminal `pytest --cov` obtenemos los siguientes resultados:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/1Rj3f2Gd/EJR8-2-4.png" alt="act8.2.4" width="900" />
+   </div>
+
+Vemos que todas las pruebas pasan correctamente.
 
 #### Ejercicio 3: Manejo de stock en producto
 
@@ -80,6 +128,47 @@ Modifica la clase `Producto` para que incluya un atributo `stock` (cantidad disp
   - Se puede agregar un producto dentro del límite de stock.
   - Se lanza una excepción al intentar agregar más unidades de las disponibles.
 
+**Solucion:**
+Modifique `Producto` en `src/carrito.py` añadiendo `self.stock = stock` en el constructor
+
+   <div align="center">
+      <img src="https://i.postimg.cc/FRvjDJck/EJR8-3-1.png" alt="act8.3.1" width="600" />
+   </div>
+
+Actualize fábrica en `src/factories.py` para que genere un stock entre 1 y 100
+
+   <div align="center">
+      <img src="https://i.postimg.cc/2Sp3QNnV/EJR8-3-2.png" alt="act8.3.2" width="600" />
+   </div>
+
+Agregue en `Carrito.agregar_producto` una condicional donde antes de agregar o incrementar la cantidad verifica que la suma de cantidades en el carrito no supere el `stock` del producto.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/vTfTjPsQ/EJR8-3-3.png" alt="act8.3.3" width="600" />
+   </div>
+
+
+Cree 2 pruebas unitaras `test_agregar_producto_al_carrito_dentro_de_limite_de_stock` y `test_agregar_producto_al_carrito_fuera_de_limite_de_stock` :
+
+   <div align="center">
+      <img src="https://i.postimg.cc/0QXMwtYn/EJR8-3-6.png" alt="act8.3.6" width="500" />
+   </div>
+   
+Este test verifica que la cantidad agregada no supere el limite de stock
+
+   <div align="center">
+      <img src="https://i.postimg.cc/QxNZv4s0/EJR8-3-4.png" alt="act8.3.4" width="600" />
+   </div>
+
+Este test verifica que la cantidad agregada supere el limite de stock y mande un excepcion
+
+Al correr las pruebas, ejecutando en la terminal `pytest --cov` obtenemos los siguientes resultados:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/fTSfWZwL/EJR8-3-5.png" alt="act8.3.5" width="900" />
+   </div>
+
+Vemos que todas las pruebas pasan correctamente.
 
 #### Ejercicio 4: Ordenar items del carrito
 
