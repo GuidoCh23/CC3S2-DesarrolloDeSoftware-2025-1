@@ -180,6 +180,40 @@ Agrega un método en `Carrito` que devuelva la lista de items ordenados por un c
 - Utiliza la función `sorted()` con una función lambda para ordenar según el criterio.
 - Escribe pruebas que verifiquen que, al agregar varios productos, la lista devuelta esté ordenada correctamente según el criterio solicitado.
 
+**Solucion:**
+Cree el metodo `obtener_items_ordenados(criterio: str)` en `src/carrito.py` donde `criterio` pueda ser `"precio"` o `"nombre"` y verifica que si se ingresa un criterio invalido mande una excepcion.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/g2YdqkFD/EJR8-4-1.png" alt="act8.4.1" width="600" />
+   </div>
+
+Cree 3 pruebas unitaras `test_ordenar_lista_por_nombre`, `test_ordenar_lista_por_precio`  y `test_ordenar_lista_por_criterio_invalido`:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/ZKHXm828/EJR8-4-2.png" alt="act8.4.2" width="550" />
+   </div>
+   
+Este test verifica que la lista de items se ordene segun el nombre
+
+   <div align="center">
+      <img src="https://i.postimg.cc/Kj0VPLXS/EJR8-4-3.png" alt="act8.4.3" width="550" />
+   </div>
+
+Este test verifica que la lista de items se ordene segun el precio
+
+   <div align="center">
+      <img src="https://i.postimg.cc/3Nq1rZ5R/EJR8-4-4.png" alt="act8.4.4" width="600" />
+   </div>
+
+Este test verifica que mande una excepcion si se quiere ordenar por un criterio invalido
+
+Al correr las pruebas, ejecutando en la terminal `pytest --cov` obtenemos los siguientes resultados:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/3rZdMwjs/EJR8-4-5.png" alt="act8.4.5" width="900" />
+   </div>
+
+Vemos que todas las pruebas pasan correctamente.
 
 #### Ejercicio 5: Uso de Pytest Fixtures
 
@@ -207,6 +241,26 @@ Refactoriza las pruebas para que utilicen **fixtures** de Pytest, de modo que se
   ```
 - Actualiza las pruebas existentes para usar estas fixtures en lugar de instanciar los objetos directamente en cada test.
 
+**Solucion:**
+Cree un archivo `tests/conftest.py` donde cree 2 fixture, uno para un carrito vacio y otro para un producto generico
+
+   <div align="center">
+      <img src="https://i.postimg.cc/MGPmY8t4/EJR8-5-1.png" alt="act5.1" width="550" />
+   </div>
+
+Modifique la prueba unitaria `test_agregar_producto_nuevo` para usar las fixtures previamente definidas
+
+   <div align="center">
+      <img src="https://i.postimg.cc/wTQJVpjV/EJR8-5-2.png" alt="act8.5.2" width="700" />
+   </div>
+   
+Al correr las pruebas, ejecutando en la terminal `pytest --cov` obtenemos los siguientes resultados:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/MZC2YCFv/EJR8-5-3.png" alt="act8.5.3" width="900" />
+   </div>
+
+Vemos que todas las pruebas pasan correctamente.
 
 #### Ejercicio 6: Pruebas parametrizadas
 
@@ -217,6 +271,20 @@ Utiliza la marca `@pytest.mark.parametrize` para crear pruebas que verifiquen m�
 - Por ejemplo, parametriza pruebas para `aplicar_descuento` usando distintos porcentajes y totales esperados.
 - De igual forma, para actualizar cantidades: prueba con diferentes valores (válidos e inválidos) y verifica que se lance la excepción en los casos correspondientes.
 
+**Solucion:**
+Modifique el test `test_aplicar_descuento` para parametrizar estas pruebas usando distintos porcentajes 
+
+   <div align="center">
+      <img src="https://i.postimg.cc/d0g9hZv1/EJR8-6-1.png" alt="act6.1" width="550" />
+   </div>
+   
+Al correr las pruebas, ejecutando en la terminal `pytest --cov` obtenemos los siguientes resultados:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/hvDQvKJv/EJR8-6-2.png" alt="act8.6.2" width="900" />
+   </div>
+
+Vemos que todas las pruebas pasan correctamente.
 
 #### Ejercicio 7: Calcular impuestos en el carrito
 
@@ -287,6 +355,53 @@ Implementar un método `calcular_impuestos(porcentaje)` que retorne el valor del
        total = self.calcular_total()
        return total * (porcentaje / 100)
    ```
+
+**Solucion:**
+
+- **RED**:
+Cree un nuevo archivo de pruebas `tests/test_impuestos.py` en donde se escribe una prueba que espera que dado un carrito con un total de \$1000, al aplicar un 10% de impuestos se retorne \$100.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/yxDqMGPr/EJR8-7-1.png" alt="act7.1" width="500" />
+   </div>
+   
+Al correr las pruebas, ejecutando en la terminal `pytest --cov` obtenemos los siguientes resultados:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/VNmxfvgt/EJR8-7-2.png" alt="act8.7.2" width="900" />
+   </div>
+
+Vemos que el test que hemos creado no pasa, porque no existe el metodo `calcular_impuestos`.
+
+- **GREEN**:
+En `src/carrito.py` añadi el metodo `calcular_impuestos` pero en su forma mas minima, para que solo pase las pruebas:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/kGRS2nsN/EJR8-7-3.png" alt="act7.3" width="400" />
+   </div>
+   
+Al correr las pruebas, ejecutando en la terminal `pytest --cov` obtenemos los siguientes resultados:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/NG2b9Y5P/EJR8-7-4.png" alt="act8.7.4" width="900" />
+   </div>
+
+Vemos que ahora todas las pruebas pasan correctamente.
+
+- **REFACTOR**:
+Ahora en el metodo `calcular_impuestos` añadi una validacion para que el porcentaje este entre 0 y 100:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/Cxnw9R1s/EJR8-7-5.png" alt="act7.5" width="550" />
+   </div>
+   
+Al correr las pruebas, ejecutando en la terminal `pytest --cov` obtenemos los siguientes resultados:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/c4rW8vQG/EJR8-7-6.png" alt="act8.7.6" width="900" />
+   </div>
+
+Vemos que ahora todas las pruebas pasan correctamente.
 
 #### Ejercicio 8: Aplicar cupón de descuento con límite máximo
 
@@ -360,7 +475,52 @@ Implementar un método `aplicar_cupon(descuento_porcentaje, descuento_maximo)` q
        return total - descuento_final
    ```
 
+**Solucion:**
 
+- **RED**:
+Cree un nuevo archivo de pruebas `tests/test_cupon.py` en donde se escribe una prueba que verifique para un carrito con total \$400 y un cupón del 20% (lo que daría \$80), si el descuento máximo es \$50, el método retorne \$350.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/zfQs1rtZ/EJR8-8-1.png" alt="act8.1" width="750" />
+   </div>
+   
+Al correr las pruebas, ejecutando en la terminal `pytest --cov` obtenemos los siguientes resultados:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/dtWnf9Ng/EJR8-8-2.png" alt="act8.8.2" width="900" />
+   </div>
+
+Vemos que el test que hemos creado no pasa, porque no existe el metodo `aplicar_cupon`.
+
+- **GREEN**:
+En `src/carrito.py` añadi el metodo `aplicar_cupon` pero en su forma mas minima, para que solo pase las pruebas:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/zv7p8wzb/EJR8-8-3.png" alt="act8.3" width="400" />
+   </div>
+   
+Al correr las pruebas, ejecutando en la terminal `pytest --cov` obtenemos los siguientes resultados:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/BQZMNzpx/EJR8-8-4.png" alt="act8.8.4" width="900" />
+   </div>
+
+Vemos que ahora todas las pruebas pasan correctamente.
+
+- **REFACTOR**:
+Ahora en el metodo `aplicar_cupon` añadi una validacion para que el porcentaje de descuento y el máximo sean valores positivos.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/pVJsfvfW/EJR8-8-5.png" alt="act8.5" width="700" />
+   </div>
+   
+Al correr las pruebas, ejecutando en la terminal `pytest --cov` obtenemos los siguientes resultados:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/D0n59pT3/EJR8-8-6.png" alt="act8.8.6" width="900" />
+   </div>
+
+Vemos que ahora todas las pruebas pasan correctamente.
 #### Ejercicio 9: Validación de stock al agregar productos (RGR)
 
 **Objetivo:**  
@@ -447,3 +607,50 @@ Asegurarse de que al agregar un producto al carrito, no se exceda la cantidad di
        else:
            self.items.append(ItemCarrito(producto, cantidad))
    ```
+
+**Solucion:**
+
+- **RED**:
+Cree un nuevo archivo de pruebas `tests/test_stock.py` en donde se escribe una prueba que verifique que si se intenta agregar mas unidades de las disponibles, se lance una excepcion.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/NFmPCR89/EJR8-9-1.png" alt="act9.1" width="750" />
+   </div>
+   
+Al correr las pruebas, ejecutando en la terminal `pytest --cov` obtenemos los siguientes resultados:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/cHVbcF3G/EJR8-9-2.png" alt="act8.9.2" width="900" />
+   </div>
+
+Vemos que el test ha fallado
+
+- **GREEN**:
+En `src/carrito.py` modifique el metodo `agregar_producto` para que valide el stock
+
+   <div align="center">
+      <img src="https://i.postimg.cc/xTLW6Vgx/EJR8-9-3.png" alt="act9.3" width="600" />
+   </div>
+   
+Al correr las pruebas, ejecutando en la terminal `pytest --cov` obtenemos los siguientes resultados:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/CKrtRhL1/EJR8-9-4.png" alt="act8.9.4" width="900" />
+   </div>
+
+Vemos que ahora todas las pruebas pasan correctamente.
+
+- **REFACTOR**:
+Ahora en el metodo `agregar_producto` centralizare en el metodo `_buscar_item` la busqueda del item en el carrito
+
+   <div align="center">
+      <img src="https://i.postimg.cc/pLx37c62/EJR8-9-5.png" alt="act9.5" width="650" />
+   </div>
+   
+Al correr las pruebas, ejecutando en la terminal `pytest --cov` obtenemos los siguientes resultados:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/cHjVbsVj/EJR8-9-6.png" alt="act8.9.6" width="900" />
+   </div>
+
+Vemos que ahora todas las pruebas pasan correctamente.
