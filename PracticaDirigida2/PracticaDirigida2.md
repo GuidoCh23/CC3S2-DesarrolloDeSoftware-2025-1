@@ -319,6 +319,25 @@ Ingrese el nuevo nombre para la rama: feature/authentication
 Rama 'feature/login' renombrada a 'feature/authentication'
 ```
 
+**Solucion:**
+Modifique el menu de opciones, agregando la opcion `f) Renombrar una rama` en la funcion `Gestion de ramas`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/B6R2gXB5/PD2-6-1.png" alt="PD2.6.1" width="400" />
+   </div>
+
+Implemente la funcionalidad de la opcion `f`, en donde le pido al usuario ingresar el nombre de la rama que quiere modificar y el nuevo nombre que quiere modificar, tambien agregando `git branch -m ` que efectua el cambio de nombre de la rama, Y finalmente mostrara un mensaje de resultados
+
+   <div align="center">
+      <img src="https://i.postimg.cc/MpsM5nWc/PD2-6-2.png" alt="PD2.6.2" width="500" />
+   </div>
+
+Ejecutando el script `./git_avanzado.sh` para probar la nueva funcionalidad, vemos que obtenemos el resultado esperado o la salida esperada correctamente  
+
+   <div align="center">
+      <img src="https://i.postimg.cc/MpGXnzyz/PD2-6-3.png" alt="PD2.6.3" width="600" />
+   </div>
+
 #### 2 . Amplia la sección de "Gestión de git diff" para permitir ver las diferencias de un archivo específico entre dos commits o ramas.
 
 **Instrucciones:**
@@ -337,75 +356,21 @@ Ingrese la ruta del archivo: src/app.js
 [Mostrará el diff solo de 'src/app.js' entre las dos revisiones]
 ```
 
-#### 3 . Crea una función que permita instalar automáticamente un hook que, por ejemplo, verifique si se han agregado comentarios de documentación en cada commit.
+**Solucion:**
+Modifique el menu de opciones, agregando la opcion `e) Comparar diferencias de un archivo específico` en la funcion `Gestion de git diff`
 
-**Instrucciones:**
+   <div align="center">
+      <img src="https://i.postimg.cc/HxZ4Q7Wd/PD2-7-1.png" alt="PD2.7.1" width="600" />
+   </div>
 
-1. **Investiga** el hook pre-commit, que se ejecuta antes de que se realice un commit.
-2. **Escribe** un pequeño script en Bash que verifique si se han modificado archivos y, para cada archivo modificado, compruebe si existen comentarios de documentación. Puedes establecer una regla simple, por ejemplo, que cada función definida en un archivo debe tener un comentario anterior.
-3. **Integra** la función en el submenú de "Gestión de Hooks" o crea una nueva opción en el menú principal para instalar este hook.
-4. **Prueba** la funcionalidad creando o modificando un commit sin la documentación requerida y verifica que el hook evite completar el commit.
+Implemente la funcionalidad de la opcion `e`, en donde le pido al usuario ingresar el nombre del primer identificador (rama o commit) y el segundo identificador (rama o commit) que quieren comparar, tambien el archivo que se quiere comparar entre ambos, ademas agregue `git diff` que la comparacion, Y finalmente mostrara un mensaje de resultados
 
-**Ejemplo de contenido del hook:**
+   <div align="center">
+      <img src="https://i.postimg.cc/MTKmMYS9/PD2-7-2.png" alt="PD2.7.2" width="500" />
+   </div>
 
-```bash
-#!/bin/bash
-# Hook pre-commit para verificar documentación en funciones
+Ejecutando el script `./git_avanzado.sh` para probar la nueva funcionalidad, vemos que obtenemos el resultado esperado o la salida esperada correctamente  
 
-# Lista de archivos modificados
-files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.c\|\.h\|\.js')
-for file in $files; do
-    # Ejemplo simplificado: verificar si existe al menos una línea con comentario ('//')
-    if ! grep -q "//" "$file"; then
-        echo "Error: El archivo '$file' no contiene comentarios de documentación."
-        exit 1
-    fi
-done
-exit 0
-```
-
-#### 4 . Implementa una opción en el script que realice un merge automatizado de una rama determinada en la rama actual, incluyendo la resolución automática de conflictos (siempre que sea posible).
-
-**Instrucciones:**
-
-1. **Investiga** las opciones de `git merge` y cómo utilizar el parámetro `--strategy-option` (por ejemplo, `-X theirs` o `-X ours`) para la resolución automática de conflictos.
-2. **Añade** una nueva opción en el menú principal (por ejemplo, "12) Merge automatizado de una rama").
-3. **Solicita** al usuario el nombre de la rama que se desea fusionar.
-4. **Ejecuta** el comando de merge con una estrategia de resolución automática, por ejemplo:
-   ```bash
-   git merge -X theirs <rama_a_fusionar>
-   ```
-5. **Valida** la operación mostrando el estado final tras el merge.
-
-**Ejemplo de salida esperada:**
-
-```
-Ingrese el nombre de la rama a fusionar: feature/login
-Merge completado automáticamente utilizando la estrategia 'theirs'.
-```
-
-#### 5 . Implementa una opción en el script que genere un reporte con información relevante del repositorio (estado, ramas, últimos commits, stashes, etc.) y lo guarde en un archivo.
-
-**Instrucciones:**
-
-1. **Agrega** una nueva opción al menú principal (por ejemplo, "13 Generar reporte de estado del repositorio").
-2. **Crea** una función que ejecute varios comandos de Git (ej. `git status`, `git branch`, `git log -n 5`, `git stash list`) y redirija la salida a un archivo, por ejemplo `reporte_git.txt`.
-3. **Agrega** mensajes claros en el reporte que indiquen qué información corresponde a cada comando.
-4. **Verifica** que el archivo se cree correctamente y que contenga la información esperada.
-
-**Ejemplo de salida esperada:**
-
-Al ejecutar la función, se debe crear el archivo `reporte_git.txt` con contenido similar a:
-```
-=== Estado del repositorio ===
-[Salida de git status]
-
-=== Ramas existentes ===
-[Salida de git branch]
-
-=== Últimos 5 commits ===
-[Salida de git log -n 5]
-
-=== Lista de stashes ===
-[Salida de git stash list]
-```
+   <div align="center">
+      <img src="https://i.postimg.cc/k5Cc9mh3/PD2-7-3.png" alt="PD2.7.3" width="600" />
+   </div>
