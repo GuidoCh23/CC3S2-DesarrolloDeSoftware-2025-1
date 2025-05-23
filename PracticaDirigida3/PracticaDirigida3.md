@@ -228,6 +228,20 @@ ps aux | grep sshd | awk '{print $2}'
 diff <(sort file1) <(sort file2)
 ```
 
+Creamos el script en bash `pipes_redireccion.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/NGJNzpmB/PD3-1-16.png" alt="PD3.1.16" width="500" />
+   </div>
+
+Ejecutamos el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/yd8MBW1t/PD3-1-17.png" alt="PD3.1.17" width="650" />
+   </div>
+
+Vemos que se muestra el `ID` del proceso `ssh`que esta corriendo, pero luego nos salta un error, la cual sucede porque no existe `file 1` y `file2`. Ademas se al ejecutar este script se crearan los archivos `listado.txt`, `errores.log` y `buil.log`. En donde se guardara el listado de todos los archivos en `listado.txt`, se guardara los errores en `errores.log` y finalmente en `buil.log` se guardara ambos (informacion de archivos y errores)
+
 #### Paso 8 – Condicionales
 
 #### if
@@ -245,6 +259,20 @@ else
 fi
 ```
 
+Creamos el script en bash `condicionales.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/9Q02yqmQ/PD3-1-18.png" alt="PD3.1.18" width="300" />
+   </div>
+
+Ejecutamos el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/66VBKXbt/PD3-1-19.png" alt="PD3.1.19" width="650" />
+   </div>
+
+Hemos probado en el caso que no se le pasa nada, en la que se pasa un numero par y otro en el que se pasa un numero impar, y vemos que funciona correctamente
+
 #### case
 
 ```bash
@@ -257,6 +285,20 @@ case "$ext" in
   *)   echo "Desconocido" ;;
 esac
 ```
+
+Creamos el script en bash `case.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/1XKSrGVf/PD3-1-20.png" alt="PD3.1.20" width="300" />
+   </div>
+
+Ejecutamos el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/yxKBRQdM/PD3-1-21.png" alt="PD3.1.21" width="650" />
+   </div>
+
+Vemos que reconoce correctamente que tipo de archivo es, probando sin pasarle nada y cuando se le pasa txt nos dice que es `Texto`
 
 #### Paso 9 – Bucles
 
@@ -275,6 +317,20 @@ while (( count>0 )); do echo "$count"; ((count--)); done
 until [[ -f resultado.txt ]]; do sleep 1; done
 echo "resultado.txt listo"
 ```
+
+Creamos el script en bash `bucles.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/YSJtrqwq/PD3-1-23.png" alt="PD3.1.23" width="400" />
+   </div>
+
+Ejecutamos el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/vBfbcFQ7/PD3-1-22.png" alt="PD3.1.22" width="550" />
+   </div>
+
+Vemos que itera en todos los bucles correctamente y tambien notaremos que el script esperara que exista el archivo `resultado.txt` para que finalize la ejecucion, por lo que cree paralelamente el archivo `resultado.txt` y por eso llega a terminar la ejecucion el script en bash `bucles.sh`
 
 #### Paso 10 – Funciones
 
@@ -298,6 +354,20 @@ else
 fi
 ```
 
+Creamos el script en bash `funciones.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/6QkYZG9D/PD3-1-24.png" alt="PD3.1.24" width="400" />
+   </div>
+
+Ejecutamos el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/t4gSGjSm/PD3-1-25.png" alt="PD3.1.25" width="650" />
+   </div>
+
+Vemos nos muestra el mensaje de saludo de la funcion `saludar` y tambien el resultado de la opercion de division dentro de la funcion `dividir`
+
 #### Paso 11 – Depuración
 
 ```bash
@@ -305,6 +375,34 @@ set -xe  # traza + salir al error
 export PS4='+ ${BASH_SOURCE}:${LINENO}:${FUNCNAME[0]}: '
 trap 'echo "Error en línea $LINENO"; exit 1' ERR
 ```
+
+Creamos el script en bash `depuracion.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/8P4KY5H6/PD3-1-26.png" alt="PD3.1.26" width="450" />
+   </div>
+
+Ejecutamos el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/ZqBw0Lh8/PD3-1-27.png" alt="PD3.1.27" width="650" />
+   </div>
+
+Vemos que se muestra solamente la definiciones que hicimos en el script `depuracion.sh`.
+Para probarlo correctamente, le agregue el codigo del script de `funciones.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/RZbPMD2C/PD3-1-28.png" alt="PD3.1.28" width="450" />
+   </div>
+
+Ejecutamos el script modificado
+
+   <div align="center">
+      <img src="https://i.postimg.cc/CLSrJDj0/PD3-1-29.png" alt="PD3.1.29" width="650" />
+   </div>
+
+Y ahora vemos como se depura linea por linea, indicando de que script en bash viene (en este caso de `depuracion.sh`), nos muestra en que linea se encuentra y tambien de que funcion proviene
+
 ### **Ejercicios**
 
 
