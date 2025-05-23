@@ -409,6 +409,20 @@ Y ahora vemos como se depura linea por linea, indicando de que script en bash vi
 1 . Escribe funciones de Bash `marco` y `polo` que hagan lo siguiente: cada vez que ejecutes `marco`, debe guardarse de alguna manera el directorio de trabajo actual, luego, cuando ejecutes `polo`, sin importar en qué directorio te encuentres, `polo` te debe devolver (con `cd`) al directorio en el que ejecutaste `marco`.
    Para facilitar la depuración, puedes poner el código en un archivo `marco.sh` y recargarlo con `source marco.sh`.
 
+- Creamos el script en bash `marco.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/8P2jv5jF/PD3-2-1.png" alt="PD3.2.1" width="300" />
+   </div>
+
+- Ejecutaremos el script y primero llamaremos a la funcion `marco` para establecer `~/PD3` como directorio actual, luego cree una nuevo directorio `test1` en la que entramos con `cd` y luego ejecutamos la funcion `polo` que nos devolvera al directorio `~/PD3` que definimos como directorio actual.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/WbFdtrbL/PD3-2-4.png" width="650" />
+   </div>
+
+- Vemos que funciona correctamente
+
 2 . Tienes un comando que falla muy raramente. Para depurarlo necesitas capturar su salida, pero puede llevar tiempo que falle. Escribe un script de Bash que ejecute el siguiente fragmento **hasta que falle**, capture sus flujos de salida estándar y de error en archivos, y finalmente imprima todo:
 
 ```bash
@@ -425,6 +439,42 @@ fi
 echo "Todo salio de acuerdo al plan"
 ```
 Indica cuántas ejecuciones fueron necesarias para que ocurriera el fallo.
+
+- Creamos el script de bash `aleatorio.sh` donde estara ejecutando el script anterior mostrado
+
+   <div align="center">
+      <img src="https://i.postimg.cc/HkM8vMf4/PD3-2-6.png" width="650" />
+   </div>
+
+   <div align="center">
+      <img src="https://i.postimg.cc/50sXQSC1/PD3-2-5.png" alt="PD3.2.5" width="400" />
+   </div>
+
+- Luego creamos el script de bash `codigo.sh` la cual creara archivos, `salida.txt` donde se guardara toda la salida que obtengamos de `aleatorio.sh` y `errores.txt` que guardara el error
+
+   <div align="center">
+      <img src="https://i.postimg.cc/fbjtDNWV/PD3-2-7.png" width="450" />
+   </div>
+
+- Ejecutando el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/R0z6kFmr/PD3-2-8.png" width="650" />
+   </div>
+
+- Vemos que nos dice que fallo despues de 9 ejecuciones, veamos tambien los archivos creados:
+
+   <div align="center">
+      <img src="https://i.postimg.cc/qMSCGwZv/PD3-2-9.png" width="300" />
+   </div>
+
+- En `salida.txt` vemos que se guardo la salida de `aleatorio.sh` hasta la 9na iteracion
+
+   <div align="center">
+      <img src="https://i.postimg.cc/65yvRgcP/PD3-2-10.png" width="350" />
+   </div>
+
+- En `errores.txt` vemos que se nos muestra el mensaje de error que predefinimos en `aleatorio.sh`
 
 3 . El `-exec` de `find` puede ser muy poderoso para realizar operaciones sobre los archivos que encuentra. Sin embargo, ¿qué pasa si queremos hacer algo con **todos** los archivos, como crear un archivo ZIP? Algunos comandos leen de **STDIN**, pero otros (como `tar`) necesitan recibir la lista de archivos como argumentos. Para unir ambos mundos tenemos `xargs`, que ejecuta un comando tomando su **STDIN** como lista de argumentos. Por ejemplo:
 
