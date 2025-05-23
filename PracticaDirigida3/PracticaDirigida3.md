@@ -7,19 +7,20 @@ Nombre: Guido Anthony Chipana Calderon
 
 #### Paso 1 – Abrir la terminal y verificar Bash
 
-1. Abre tu **Terminal** en Linux/macOS o Git Bash en Windows.  
+1. Abre tu **Terminal** en Linux/macOS o Git Bash en Windows.  
 2. Comprueba la versión de Bash:
    ```bash
    bash --version
    ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/tTg3dGrP/PD3-1-1.png" alt="PD3.1.1" width="600" />
+   </div>
+
 3. Asegúrate de usar la cabecera portable en tus scripts:
    ```bash
    #!/usr/bin/env bash
    ```
-
-   <div align="center">
-      <img src="https://i.postimg.cc/y6jfHtKd/PD3-0-1.png" alt="PD3.0.1" width="500" />
-   </div>
 
 #### Paso 2 – "Hello, World!": tu primer script
 
@@ -32,6 +33,11 @@ Nombre: Guido Anthony Chipana Calderon
    #!/usr/bin/env bash
    echo "Hello, World!"
    ```
+
+   <div align="center">
+      <img src="https://i.postimg.cc/QdpJhb9B/PD3-1-2.png" alt="PD3.1.2" width="300" />
+   </div>
+
 3. Guarda y habilita:
    ```bash
    chmod +x hello.sh
@@ -42,10 +48,11 @@ Nombre: Guido Anthony Chipana Calderon
    ```
 
    <div align="center">
-      <img src="https://i.postimg.cc/y6jfHtKd/PD3-0-1.png" alt="PD2.0.1" width="300" />
+      <img src="https://i.postimg.cc/8CNB56MZ/PD3-1-3.png" alt="PD3.1.3" width="600" />
    </div>
 
-
+Al ejecutar nos sale el mensaje de `Hello, World!`
+   
 #### Paso 3 – Asignación de variables
 
 ```bash
@@ -62,9 +69,16 @@ echo "Entorno: $ENV"
 - Usa siempre comillas al expandir: `"$VAR"`.  
 - Activa `set -u` para error si variable no definida.
 
+Cree `variable.sh` y escribi el script en bash que nos dan como ejemplo
 
    <div align="center">
-      <img src="https://i.postimg.cc/y6jfHtKd/PD3-0-1.png" alt="PD2.0.1" width="300" />
+      <img src="https://i.postimg.cc/nh8Gy5zb/PD3-1-4.png" alt="PD3.1.4" width="200" />
+   </div>
+
+Ejecuntado nos da el `Usuario`, el valor de `pi redondeado` y el `Entorno` o `ENV`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/RVJTb9vL/PD3-1-5.png" alt="PD3.1.5" width="600" />
    </div>
 
 #### Paso 4 – Parámetros posicionales
@@ -80,10 +94,26 @@ shift 1
 echo "Ahora \$1 es: $1"
 ```
 
+Creamos el script en bash `parametros_posicionales.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/J72qqtCh/PD3-1-6.png" alt="PD3.1.6" width="300" />
+   </div>
+
 Ejecuta:
+
 ```bash
 ./script_params.sh f1 f2 f3
 ```
+
+Ejecutamos el script `parametros_posicionales.sh` ejecutando el siguiente comando `./parametros_posicionales.sh` en la terminal
+
+   <div align="center">
+      <img src="https://i.postimg.cc/90KYFgY9/PD3-1-7.png" alt="PD3.1.7" width="700" />
+   </div>
+
+Vemos que se imprime el nombre del script, todos los paramaetro (f1, f2, f3), la cantidad total de parametros que se han pasado y finalmente vemos como con `shift 1`, `$S1` es ahora f2, osea que se corrio una variable a la derecha
+
 #### Paso 5 – Arrays en Bash
 
 ```bash
@@ -100,6 +130,20 @@ declare -A EDADES=([Alice]=28 [Kapu]=35)
 echo "Kapu tiene ${EDADES[Kapu]} años"
 ```
 
+Creamos el script en bash `arrays.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/D08ch3LF/PD3-1-8.png" alt="PD3.1.7" width="350" />
+   </div>
+
+Ejecutamos el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/W397x1DX/PD3-1-9.png" alt="PD3.1.7" width="600" />
+   </div>
+
+Vemos que nos muestra la cantidad de frutas, imprime todas las frutas iterando el array de frutas que se creo en el script y finalmente nos muestra cuando años tiene `kapu`
+
 #### Paso 6 – Expansiones
 
 #### Aritmética
@@ -110,6 +154,20 @@ echo "$a + $b = $((a + b))"
 echo "$a ** $b = $((a ** b))"
 ```
 
+Creamos el script en bash `aritmetica.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/mryjNwTx/PD3-1-10.png" alt="PD3.1.10" width="300" />
+   </div>
+
+Ejecutamos el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/V6sR7CNJ/PD3-1-11.png" alt="PD3.1.11" width="600" />
+   </div>
+
+Vemos que se efectua las operaciones aritmeticas entre `a` y `b` que son 2 variables numericas definidas en el script
+
 #### Substitución de comandos
 
 ```bash
@@ -117,6 +175,20 @@ fecha=$(date +%Y-%m-%d)
 archivos=$(ls | wc -l)
 echo "Hoy: $fecha, Archivos: $archivos"
 ```
+
+Creamos el script en bash `substitucion_comandos.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/fTVHnmfX/PD3-1-13.png" alt="PD3.1.12" width="300" />
+   </div>
+
+Ejecutamos el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/CKgJqtTH/PD3-1-12.png" alt="PD3.1.13" width="650" />
+   </div>
+
+Vemos que nos muestra la fecha actual y la cantidad de archivos
 
 #### Otras
 
@@ -126,6 +198,20 @@ echo "${VAR:-default}"       # default si VAR vacío
 txt="archivo.tar.gz"
 echo "${txt%.tar.gz}"        # quita sufijo
 ```
+
+Creamos el script en bash `otras.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/RZfXqm8Z/PD3-1-14.png" alt="PD3.1.14" width="400" />
+   </div>
+
+Ejecutamos el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/bN4mzrm5/PD3-1-15.png" alt="PD3.1.15" width="600" />
+   </div>
+
+Vemos que se imprime `default` ya que `VAR` dentro del script `otras.sh` esta vacio y tambien vemos que se imprime el nombre del archivo `archivo.tar.gz` pero sin el sufijo `.tar.gz`
 
 #### Paso 7 – Pipes y redirección
 
