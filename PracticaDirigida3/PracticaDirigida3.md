@@ -501,6 +501,21 @@ else
   echo "Email inválido"
 fi
 ```
+
+Creamos el script en bash `expresiones_regulares_bash.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/B6J824S8/PD3-3-1.png" alt="PD3.3.1" width="400" />
+   </div>
+
+Ejecutamos el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/cHfpGGwc/PD3-3-2.png" alt="PD3.3.2" width="650" />
+   </div>
+
+Hemos probando con un email valido y otro invalido, y vemos que funciona correctamente
+
 #### Paso 13 – Expresiones regulares en Python
 
 Crea `extract_emails.py`:
@@ -519,6 +534,26 @@ Uso:
 cat logs.txt | python3 extract_emails.py
 ```
 
+Creamos el script en bash `extract_emails.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/qqh1n9x3/PD3-3-3.png" alt="PD3.3.3" width="450" />
+   </div>
+   
+Tambien creamos el archivo `logs.txt` donde escribi emails de ejemplo
+
+   <div align="center">
+      <img src="https://i.postimg.cc/vBmq811X/PD3-3-4.png" alt="PD3.3.4" width="300" />
+   </div>
+   
+Ejecutamos el script pasandole `logs.txt`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/q74DYD4P/PD3-3-5.png" alt="PD3.3.5" width="650" />
+   </div>
+
+Vemos que nos muestra los emails que estan en `logs.txt`, el script funciona correctamente
+
 **Validar nombre de rama**
 
 ```bash
@@ -532,6 +567,20 @@ if [[ ! $branch =~ $re ]]; then
   exit 1
 fi
 ```
+
+Creamos el script en bash `validar_rama.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/tRL4QWwq/PD3-3-6.png" alt="PD3.3.6" width="500" />
+   </div>
+   
+Ejecutamos el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/XNZYzQ21/PD3-3-7.png" alt="PD3.3.7" width="650" />
+   </div>
+
+Hemos probando primero con `main` pero vemos que nos dice que no sigue el formato definido en el bash y para probar cuando sea valido creamos una nueva rama la cual sigue el formato definido en el bash, al ejecutar desde esta nueva rama vemos que no sucede nada por lo que no es invalida y funciono correctamente
 
 **Validar mensaje de commit**
 
@@ -547,6 +596,20 @@ if ! grep -Eq "$re" "$msg_file"; then
 fi
 ```
 
+Creamos el script en `.git/hooks/commit-msg`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/SsV2yR0S/PD3-3-8.png" alt="PD3.3.8" width="500" />
+   </div>
+   
+Ejecutamos el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/SK6YvVDz/PD3-3-9.png" alt="PD3.3.9" width="700" />
+   </div>
+
+Probamos primero con un mensaje de commit invalido y vemos que nos el mensaje de error, entonces ahora hacemos el mensaje del commit con el formato definido en el hook y vemos que se hace el commit correctamente
+
 **Validar formato de tag semántico**
 
 ```bash
@@ -561,6 +624,20 @@ if [[ ! $tag =~ $re ]]; then
 fi
 ```
 
+Creamos el script en bash `validar_formato_tag.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/Qtzrfm61/PD3-3-10.png" alt="PD3.3.10" width="500" />
+   </div>
+   
+Ejecutamos el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/fWH3NQPf/PD3-3-11.png" alt="PD3.3.11" width="700" />
+   </div>
+
+Hemos probando con un tag invalido y lo ha reconocido como invalido, tambien probamos con un tag valido y funciona correctamente
+
 **Extraer issue IDs de mensajes (`git log`)**
 
 ```bash
@@ -572,6 +649,20 @@ git log --oneline | \
 # (?=\])   ─ lookahead para "]"
 ```
 
+Creamos el script en bash `extraer_issue_id.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/xdRNY243/PD3-3-12.png" alt="PD3.3.12" width="450" />
+   </div>
+   
+Ejecutamos el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/xdxCSKxT/PD3-4-4.png" alt="PD3.4.4" width="750" />
+   </div>
+
+Al ejecutar el script vemos que no devuelve nada, esto es porque en el historial de commits no hay ningun commit con el formato especificado en el script, por lo que cree un commit siguiendo este formato y al momento de ejecutar este script, vemos que nos devuelve el nombre que estaba entre `[ ]`
+
 **Detectar merges automáticos y extraer la rama objetivo**
 
 ```bash
@@ -579,6 +670,21 @@ git log --grep='^Merge branch' --pretty=format:'%s' | \
   grep -Po "(?<=Merge branch ')[^']+" 
 # Captura el nombre de la rama tras "merge branch '<rama>'"
 ```
+
+Creamos el script en bash `detectar_merge.sh`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/gkF35WLt/PD3-4-5.png" alt="PD3.4.5" width="450" />
+   </div>
+   
+Ejecutamos el script
+
+   <div align="center">
+      <img src="https://i.postimg.cc/SKWB6q80/PD3-4-6.png" alt="PD3.4.6" width="650" />
+   </div>
+
+He agregado un commit de merge y luego ejecutamo el script y vemos que nos devuelve el nombre de la rama con la que fue el merge
+
 **Paso con grupo nombrado y alternancia**
 
 ```python
