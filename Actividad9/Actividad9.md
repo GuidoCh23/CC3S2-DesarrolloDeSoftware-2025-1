@@ -27,7 +27,6 @@ El proyecto se desarrollará de forma incremental utilizando el proceso RGR (Red
 
 Desarrolla las 6 iteraciones de Desarrollo Guiado por Pruebas (TDD) (Red-Green-Refactor) aplicadas a la clase `UserManager`, incluyendo casos de mocks, stubs, fakes, spies e inyección de dependencias. Cada iteración presenta un escenario diferente para ilustrar cómo podrías usar estas técnicas. 
 
-
 #### Iteración 1: Agregar usuario (Básico)
 
 #### Paso 1 (Red): Escribimos la primera prueba
@@ -53,7 +52,15 @@ def test_agregar_usuario_exitoso():
     assert manager.user_exists(username), "El usuario debería existir después de ser agregado."
 ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/vZP5hnQs/AC9-1-1.png" alt="AC.1.1" width="600" />
+   </div>
+
 Si ejecutamos `pytest`, la prueba fallará porque aún no hemos implementado la clase `UserManager`.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/hjmxK3VD/AC9-1-2.png" alt="AC.1.2" width="900" />
+   </div>
 
 #### Paso 2 (Green): Implementamos lo mínimo para que pase la prueba
 
@@ -76,7 +83,15 @@ class UserManager:
         return username in self.users
 ```
 
-Volvemos a ejecutar `pytest` y ahora la prueba debe pasar.
+   <div align="center">
+      <img src="https://i.postimg.cc/8CjM0C5r/AC9-1-3.png" alt="AC.1.3" width="500" />
+   </div>
+
+Volvemos a ejecutar `pytest` y ahora la prueba pasan correctamente.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/vmkfFdg2/AC9-1-4.png" alt="AC.1.4" width="900" />
+   </div>
 
 #### Paso 3 (Refactor)
 
@@ -124,9 +139,17 @@ def test_autenticar_usuario_exitoso_con_hash():
     assert autenticado, "El usuario debería autenticarse correctamente con la contraseña correcta."
 ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/NFYyBGgD/AC9-2-1.png" alt="AC.2.1" width="600" />
+   </div>
+
 Notar que hemos creado un `FakeHashService` que actúa como un **Fake**: se comporta como un servicio “real”, pero su lógica es simplificada para pruebas (no usa un algoritmo de hashing real).
 
 Si ejecutamos la prueba, fallará porque no hemos implementado ni `authenticate_user` ni la inyección de `hash_service`.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/xjyJgmR4/AC9-2-2.png" alt="AC.2.2" width="900" />
+   </div>
 
 #### Paso 2 (Green): Implementamos la funcionalidad y la DI
 
@@ -175,7 +198,15 @@ class UserManager:
         return self.hash_service.verify(password, stored_hash)
 ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/pXW9SdcX/AC9-2-3.png" alt="AC.2.3" width="550" />
+   </div>
+
 Ejecutamos `pytest` y la prueba debería pasar. Nuestra inyección de dependencias nos permite cambiar la lógica de hashing sin modificar `UserManager`.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/Y03v9c0H/AC9-2-4.png" alt="AC.2.4" width="900" />
+   </div>
 
 #### Paso 3 (Refactor)
 
@@ -207,11 +238,19 @@ def test_hash_service_es_llamado_al_agregar_usuario():
     mock_hash_service.hash.assert_called_once_with(password)
 ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/gJw9j30k/AC9-2-5.png" alt="AC.2.5" width="450" />
+   </div>
+
 Esta prueba verificará que, después de llamar a `add_user`, efectivamente el método `hash` se llamó **exactamente una vez** con `password` como argumento.
 
 #### Paso 2 (Green): Probar que todo pasa
 
 Realmente, nuestro código ya llama a `hash_service.hash`. Si ejecutamos `pytest`, la prueba debería pasar de inmediato, pues la implementación actual ya cumple la expectativa.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/gJ1CZrwy/AC9-2-6.png" alt="AC.2.6" width="900" />
+   </div>
 
 #### Paso 3 (Refactor)
 
@@ -240,16 +279,27 @@ def test_no_se_puede_agregar_usuario_existente_stub():
     assert "ya existe" in str(exc.value)
 ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/XvtWwsmy/AC9-2-7.png" alt="AC.2.7" width="420" />
+   </div>
+
 Aquí forzamos con una subclase `StubUserManager` que devuelva `True` en `user_exists`, simulando que el usuario “ya existe”. Así aislamos el comportamiento sin importar lo que pase dentro.
 
 #### Paso 2 (Green)
 
-Nuestra lógica ya lanza `UserAlreadyExistsError` si `user_exists` devuelve `True`. Así que la prueba debería pasar sin modificar el código.
+Modificaremos la clase `UserManager`, especificamente el metodo `add_user` para que use `user_exists` y devuelva `True`
+
+   <div align="center">
+      <img src="https://i.postimg.cc/hPNkj2zJ/AC9-2-9.png" alt="AC.2.9" width="600" />
+   </div>
 
 #### Paso 3 (Refactor)
 
-Nada adicional por el momento.
+Nada adicional por el momento. Todas las pruebas pasan
 
+   <div align="center">
+      <img src="https://i.postimg.cc/FRc4GjXC/AC9-2-8.png" alt="AC.2.8" width="900" />
+   </div>
 
 #### Iteración 5: Agregar un "Fake" repositorio de datos (Inyección de Dependencias)
 
@@ -285,8 +335,17 @@ def test_inyectar_repositorio_inmemory():
     manager.add_user(username, password)
     assert manager.user_exists(username)
 ```
+   <div align="center">
+      <img src="https://i.postimg.cc/2SvPBnh0/AC9-2-10.png" alt="AC.2.10" width="500" />
+   </div>
 
 Como vemos, ahora `UserManager` debería aceptar un `repo` para almacenar y consultar usuarios, en vez de usar un diccionario interno.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/R0B21qT4/AC9-2-11.png" alt="AC.2.11" width="900" />
+   </div>
+   
+Al ejecutar los test vemos que no pasa, porque `repo` aun no esta definida en la clase `UserManager`
 
 #### Paso 2 (Green): Implementación
 
@@ -338,7 +397,15 @@ class UserManager:
         return self.hash_service.verify(password, stored_hash)
 ```
 
-Volvemos a correr los tests. Ahora debe pasar.
+   <div align="center">
+      <img src="https://i.postimg.cc/fyz8k9Zg/AC9-2-12.png" alt="AC.2.12" width="500" />
+   </div>
+
+Volvemos a correr los tests. Ahora los test pasan.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/J7xTvP5w/AC9-2-13.png" alt="AC.2.13" width="900" />
+   </div>
 
 #### Paso 3 (Refactor)
 
@@ -368,7 +435,15 @@ def test_envio_correo_bienvenida_al_agregar_usuario():
     mock_email_service.send_welcome_email.assert_called_once_with(username)
 ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/4d79P4PN/AC9-3-1.png" alt="AC.3.1" width="550" />
+   </div>
+
 Esta prueba fallará al inicio porque `UserManager` aún no llama a ningún `send_welcome_email`.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/8kvvr5sZ/AC9-3-2.png" alt="AC.3.2" width="900" />
+   </div>
 
 #### Paso 2 (Green): Implementamos la llamada al servicio de correo
 
@@ -384,13 +459,23 @@ class UserManager:
     # ... resto de métodos ...
 
     def add_user(self, username, password):
+	    if self.user_exists(username):
+		    raise UserAlreadyExistsError(f"El usuario '{username}' ya existe. ")
         hashed = self.hash_service.hash(password)
         self.repo.save_user(username, hashed)
         if self.email_service:
             self.email_service.send_welcome_email(username)
 ```
 
+   <div align="center">
+      <img src="https://i.postimg.cc/QCcWL6v2/AC9-3-3.png" alt="AC.3.3" width="550" />
+   </div>
+
 Ejecutamos de nuevo `pytest`. Ahora la prueba debe pasar, ya que llamamos al `email_service`.
+
+   <div align="center">
+      <img src="https://i.postimg.cc/63kGmsbV/AC9-3-4.png" alt="AC.3.4" width="900" />
+   </div>
 
 #### Paso 3 (Refactor)
 
