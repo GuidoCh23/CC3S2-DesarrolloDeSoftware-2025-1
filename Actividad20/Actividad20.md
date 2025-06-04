@@ -4,7 +4,7 @@
 - Germain Ronald Choquechambi Quispe
 - Guido Anthony Chipana Calderon
 - Edy Saul Serrano Arostegui
-- 
+
 #### Fase 0: Preparación 
 
 1. **Revisa**:
