@@ -1,5 +1,10 @@
 ### Actividad 20: Escribiendo infraestructura como código en un entorno local con Terraform
-
+#### Integrantes:
+- Frank Oliver Hinojosa Zamora
+- Germain Ronald Choquechambi Quispe
+- Guido Anthony Chipana Calderon
+- Edy Saul Serrano Arostegui
+- 
 #### Fase 0: Preparación 
 
 1. **Revisa**:
