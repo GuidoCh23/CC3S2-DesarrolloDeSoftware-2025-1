@@ -1,0 +1,18 @@
+{
+  "variable": {
+    "port": {
+      "type": "string",
+      "default": "8080"
+    }
+  },
+  "resource": {
+    "null_resource": {
+      "network": {
+        "triggers": {
+          "port": "${var.port}"
+        }
+      }
+    }
+  }
+}
+

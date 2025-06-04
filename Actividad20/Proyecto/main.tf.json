@@ -1,0 +1,16 @@
+{
+  "resource": {
+    "null_resource": {
+      "local_server": {
+        "provisioner": {
+          "local-exec": {
+            "command": "echo 'Arrancando 8080'"
+          }
+        },
+        "triggers": {
+          "port": "8080"
+        }
+      }
+    }
+  }
+}
